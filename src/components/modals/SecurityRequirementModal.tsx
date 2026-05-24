@@ -21,7 +21,7 @@ import {
     OpenApi31Document,
     OpenApiDocument,
     SecurityScheme
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 
 interface SecurityRequirementModalProps {
     isOpen: boolean;

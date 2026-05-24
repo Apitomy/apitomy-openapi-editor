@@ -1,16 +1,16 @@
 {
-  "name": "@apicurio/openapi-editor",
+  "name": "@apitomy/openapi-editor",
   "version": "0.1.0",
   "description": "A reusable React component for visual OpenAPI editing",
   "type": "module",
-  "main": "./dist/apicurio-openapi-editor.cjs.js",
-  "module": "./dist/apicurio-openapi-editor.es.js",
+  "main": "./dist/apitomy-openapi-editor.cjs.js",
+  "module": "./dist/apitomy-openapi-editor.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/apicurio-openapi-editor.es.js",
-      "require": "./dist/apicurio-openapi-editor.cjs.js"
+      "import": "./dist/apitomy-openapi-editor.es.js",
+      "require": "./dist/apitomy-openapi-editor.cjs.js"
     }
   },
   "files": [
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Apicurio/apicurio-openapi-editor.git"
+    "url": "git+https://github.com/Apitomy/apitomy-openapi-editor.git"
   },
   "keywords": [
     "openapi",
@@ -37,18 +37,18 @@
     "editor",
     "react",
     "component",
-    "apicurio",
+    "apitomy",
     "swagger",
     "visual-editor"
   ],
-  "author": "Apicurio",
+  "author": "Apitomy",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/Apicurio/apicurio-openapi-editor/issues"
+    "url": "https://github.com/Apitomy/apitomy-openapi-editor/issues"
   },
-  "homepage": "https://github.com/Apicurio/apicurio-openapi-editor#readme",
+  "homepage": "https://github.com/Apitomy/apitomy-openapi-editor#readme",
   "peerDependencies": {
-    "@apicurio/data-models": "^2.2.6",
+    "@apitomy/data-models": "^3.1.0",
     "@patternfly/react-core": "^6.0.0",
     "@patternfly/react-icons": "^6.0.0",
     "@patternfly/react-table": "^6.0.0",
@@ -59,7 +59,7 @@
     "zustand": "^5.0.0"
   },
   "devDependencies": {
-    "@apicurio/data-models": "2.3.1",
+    "@apitomy/data-models": "3.1.0",
     "@eslint/js": "9.39.3",
     "@patternfly/react-core": "6.4.1",
     "@patternfly/react-icons": "6.4.0",

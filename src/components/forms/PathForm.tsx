@@ -29,7 +29,7 @@ import {
     OpenApi31PathItem,
     OpenApiParameter,
     OpenApiServersParent
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import {useSelection} from '@hooks/useSelection';
 import {CreateOperationCommand} from '@commands/CreateOperationCommand';
 import {DeleteOperationCommand} from '@commands/DeleteOperationCommand';

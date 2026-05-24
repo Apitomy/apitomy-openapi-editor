@@ -2,7 +2,7 @@
  * Service for validating OpenAPI documents
  */
 
-import { Document, Library, ValidationProblem, ValidationProblemSeverity } from '@apicurio/data-models';
+import { Document, Library, ValidationProblem, ValidationProblemSeverity } from '@apitomy/data-models';
 
 /**
  * Represents a validation problem in the document
@@ -30,7 +30,7 @@ export interface ValidationResult {
 }
 
 /**
- * Service for validating OpenAPI documents using apicurio-data-models
+ * Service for validating OpenAPI documents using apitomy-data-models
  */
 export class ValidationService {
     /**

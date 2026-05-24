@@ -33,7 +33,7 @@ import {
     OpenApi30Document,
     OpenApi30Operation,
     OpenApi31Document,
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { useCommand } from '@hooks/useCommand';
 import { useSelection } from '@hooks/useSelection';
 import { useDocument } from '@hooks/useDocument';
@@ -545,7 +545,7 @@ export const ResponsesSection: React.FC<ResponsesSectionProps> = ({ operation })
                                         >
                                             {activeHeaderNames.map((headerName, index) => {
                                                 const responseNode = responses?.getItem?.(statusCode);
-                                                const headers = responseNode?.getHeaders?.();
+                                                const headers = ((responseNode as any)?.getHeaders?.());
                                                 const header = headers?.[headerName];
                                                 const schemaInfo = getHeaderSchemaInfo(header);
                                                 const dropdownId = `hdr-${statusCode}-${index}`;
@@ -687,7 +687,7 @@ export const ResponsesSection: React.FC<ResponsesSectionProps> = ({ operation })
                                         >
                                             {activeMediaTypeNames.map((mtName, index) => {
                                                 const responseNode = responses?.getItem?.(statusCode);
-                                                const content = responseNode?.getContent?.();
+                                                const content = ((responseNode as any)?.getContent?.());
                                                 const mediaType = content?.[mtName];
                                                 const schemaInfo = getSchemaInfo(mediaType);
                                                 const dropdownId = `mt-${statusCode}-${index}`;

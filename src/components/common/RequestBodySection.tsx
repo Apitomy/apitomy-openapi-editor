@@ -30,7 +30,7 @@ import {
     OpenApi30Document,
     OpenApi30Operation,
     OpenApi31Document,
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { useCommand } from '@hooks/useCommand';
 import { useSelection } from '@hooks/useSelection';
 import { useDocument } from '@hooks/useDocument';

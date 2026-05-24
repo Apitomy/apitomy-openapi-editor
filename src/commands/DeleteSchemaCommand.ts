@@ -13,7 +13,7 @@ import {
     OpenApi30Schema,
     OpenApi31Document,
     Library
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

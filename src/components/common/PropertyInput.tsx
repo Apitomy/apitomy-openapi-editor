@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { FormGroup, TextInput, TextArea } from '@patternfly/react-core';
-import { Node, NodePath, NodePathUtil } from '@apicurio/data-models';
+import { Node, NodePath, NodePathUtil } from '@apitomy/data-models';
 import { useCommand } from '@hooks/useCommand';
 import { useSelection } from '@hooks/useSelection';
 import { useDocumentStore } from '@stores/documentStore';

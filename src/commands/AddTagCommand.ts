@@ -2,7 +2,7 @@
  * Command to add a new tag to the document
  */
 
-import { Document, OpenApiDocument, Tag } from '@apicurio/data-models';
+import { Document, OpenApiDocument, Tag } from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

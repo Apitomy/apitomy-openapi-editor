@@ -28,7 +28,7 @@ import {
     OpenApiDocument,
     SecurityRequirement,
     SecurityScheme
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { useDocument } from '@hooks/useDocument';
 import { useCommand } from '@hooks/useCommand';
 import { useSelection } from '@hooks/useSelection';

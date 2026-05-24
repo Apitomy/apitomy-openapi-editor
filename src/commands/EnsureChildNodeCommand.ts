@@ -1,4 +1,4 @@
-import {Document, Node, NodePath, NodePathUtil, OpenApiDocument} from '@apicurio/data-models';
+import {Document, Node, NodePath, NodePathUtil, OpenApiDocument} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 import {getCreator, getGetter, getSetter} from "@utils/nodeUtils.ts";
 

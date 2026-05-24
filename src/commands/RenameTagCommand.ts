@@ -2,7 +2,7 @@
  * Command to rename a tag
  */
 
-import { Document, OpenApiDocument, Tag } from '@apicurio/data-models';
+import { Document, OpenApiDocument, Tag } from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

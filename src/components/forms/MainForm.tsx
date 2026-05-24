@@ -5,7 +5,7 @@
 import React from 'react';
 import "./MainForm.css";
 import { Title, Label } from '@patternfly/react-core';
-import { Extensible, Node, OpenApiServersParent } from '@apicurio/data-models';
+import { Extensible, Node, OpenApiServersParent } from '@apitomy/data-models';
 import { useDocument } from '@hooks/useDocument';
 import { InfoSection } from '@components/forms/main/InfoSection';
 import { ContactSection } from '@components/forms/main/ContactSection';

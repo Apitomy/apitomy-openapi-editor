@@ -15,7 +15,7 @@ import {
 import { ExclamationCircleIcon, ExclamationTriangleIcon, CheckCircleIcon } from '@patternfly/react-icons';
 import { useValidation } from '@hooks/useValidation';
 import { useSelection } from '@hooks/useSelection';
-import { ValidationProblem, ValidationProblemSeverity } from '@apicurio/data-models';
+import { ValidationProblem, ValidationProblemSeverity } from '@apitomy/data-models';
 
 export interface ValidationPanelProps {
 }

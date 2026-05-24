@@ -14,9 +14,9 @@ export default defineConfig({
     build: {
         lib: {
             entry: resolve(__dirname, 'src/index.ts'),
-            name: 'ApicurioOpenAPIEditor',
+            name: 'ApitomyOpenAPIEditor',
             formats: ['es', 'cjs'],
-            fileName: (format) => `apicurio-openapi-editor.${format}.js`,
+            fileName: (format) => `apitomy-openapi-editor.${format}.js`,
         },
         rollupOptions: {
             external: [
@@ -27,7 +27,7 @@ export default defineConfig({
                 '@patternfly/react-table',
                 '@patternfly/react-icons',
                 'zustand',
-                '@apicurio/data-models',
+                '@apitomy/data-models',
             ],
             output: {
                 globals: {

@@ -2,7 +2,7 @@
  * Local command interface for undo/redo operations
  */
 
-import {Document, NodePath} from '@apicurio/data-models';
+import {Document, NodePath} from '@apitomy/data-models';
 import {SelectionChangeEvent} from '@models/SelectionTypes';
 
 /**

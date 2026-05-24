@@ -2,7 +2,7 @@
  * Command to delete all servers from any node that supports servers
  */
 
-import { Document, Node, NodePath, NodePathUtil, OpenApi30Server, OpenApiServer, Library } from '@apicurio/data-models';
+import { Document, Node, NodePath, NodePathUtil, OpenApi30Server, OpenApiServer, Library } from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

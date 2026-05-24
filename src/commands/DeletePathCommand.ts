@@ -2,7 +2,7 @@
  * Command to delete a path item from the document
  */
 
-import { Document, OpenApi30Document, OpenApi30PathItem, Library } from '@apicurio/data-models';
+import { Document, OpenApi30Document, OpenApi30PathItem, Library } from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

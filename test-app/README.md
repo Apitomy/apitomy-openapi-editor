@@ -1,6 +1,6 @@
 # OpenAPI Editor Test Application
 
-This is a test application for manually testing the Apicurio OpenAPI Editor component during development.
+This is a test application for manually testing the Apitomy OpenAPI Editor component during development.
 
 ## Purpose
 

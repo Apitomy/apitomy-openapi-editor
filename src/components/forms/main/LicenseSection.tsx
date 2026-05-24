@@ -5,7 +5,7 @@
 import React, {useState} from 'react';
 import {Button} from '@patternfly/react-core';
 import {PencilAltIcon} from '@patternfly/react-icons';
-import {NodePathUtil, OpenApiDocument} from '@apicurio/data-models';
+import {NodePathUtil, OpenApiDocument} from '@apitomy/data-models';
 import {useDocument} from '@hooks/useDocument';
 import {useCommand} from '@hooks/useCommand';
 import {ExpandablePanel} from '@components/common/ExpandablePanel';

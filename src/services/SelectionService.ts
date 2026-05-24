@@ -8,7 +8,7 @@ import {
     NodePathUtil,
     TraverserDirection,
     VisitorUtil
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import {useSelectionStore} from '@stores/selectionStore';
 import {useDocumentStore} from '@stores/documentStore';
 import {NavigationObjectResolverVisitor} from '@visitors/NavigationObjectResolverVisitor';

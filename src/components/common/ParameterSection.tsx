@@ -19,7 +19,7 @@ import {
     Tooltip,
 } from '@patternfly/react-core';
 import { EllipsisVIcon, PlusCircleIcon } from '@patternfly/react-icons';
-import {NodePathUtil, OpenApiParameter} from '@apicurio/data-models';
+import {NodePathUtil, OpenApiParameter} from '@apitomy/data-models';
 import { ExpandablePanel } from './ExpandablePanel';
 
 export interface ParameterSectionProps {

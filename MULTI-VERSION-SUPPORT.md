@@ -3,7 +3,7 @@
 ## Overview
 
 This document outlines the strategy and implementation plan for supporting multiple OpenAPI specification
-versions (2.0, 3.0, and 3.1) within the Apicurio OpenAPI Editor.
+versions (2.0, 3.0, and 3.1) within the Apitomy OpenAPI Editor.
 
 ## Strategy: Hybrid Version-Aware Architecture
 
@@ -21,7 +21,7 @@ Components that work identically across all OpenAPI versions without modificatio
 
 **Implementation:**
 - Use existing components as-is
-- Leverage `@apicurio/data-models` polymorphic APIs
+- Leverage `@apitomy/data-models` polymorphic APIs
 - No version-specific logic required
 
 ### Tier 2: Conditionally Rendered Components
@@ -80,10 +80,10 @@ const MyComponent = () => {
 
 ### Version Detection Utilities
 
-The `@apicurio/data-models` library provides type guards:
+The `@apitomy/data-models` library provides type guards:
 
 ```typescript
-import { ModelTypeUtil } from '@apicurio/data-models';
+import { ModelTypeUtil } from '@apitomy/data-models';
 
 // Check version
 if (ModelTypeUtil.isOpenApi2Model(document)) {
@@ -362,7 +362,7 @@ const handleSaveParameter = (name: string, type: string, required: boolean) => {
 - Handle breaking changes gracefully
 
 ### Data Model Compatibility
-- The `@apicurio/data-models` library handles most version differences
+- The `@apitomy/data-models` library handles most version differences
 - Use polymorphic methods where available
 - Fall back to direct property access when necessary
 
@@ -386,7 +386,7 @@ const handleSaveParameter = (name: string, type: string, required: boolean) => {
 - [OpenAPI 2.0 Specification](https://swagger.io/specification/v2/)
 - [OpenAPI 3.0 Specification](https://swagger.io/specification/v3/)
 - [OpenAPI 3.1 Specification](https://spec.openapis.org/oas/v3.1.0)
-- [@apicurio/data-models Documentation](https://github.com/Apicurio/apicurio-data-models)
+- [@apitomy/data-models Documentation](https://github.com/Apitomy/apitomy-data-models)
 
 ---
 

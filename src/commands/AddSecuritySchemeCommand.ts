@@ -6,14 +6,14 @@ import {
     Document,
     ModelTypeUtil,
     OpenApi20Document,
-    OpenApi20SecurityScheme, OpenApi30Components,
+    OpenApi20SecurityScheme,
     OpenApi30Document,
-    OpenApi30SecurityScheme, OpenApi31Components,
+    OpenApi30SecurityScheme,
     OpenApi31Document
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 import { SecuritySchemeData } from '@components/modals/SecuritySchemeModal';
-import {OpenApiOAuthFlow} from "@apicurio/data-models/src/io/apicurio/datamodels/models/openapi/OpenApiOAuthFlow";
+import {OpenApiOAuthFlow} from "@apitomy/data-models";
 
 /**
  * Command to add a new security scheme definition to the document
@@ -76,7 +76,7 @@ export class AddSecuritySchemeCommand extends BaseCommand {
         if (this._index !== undefined) {
             // Get all existing schemes
             const existingNames = definitions.getItemNames();
-            const allSchemes: Array<{ name: string; scheme: OpenApi20SecurityScheme }> = [];
+            const allSchemes: Array<{ name: string; scheme: any }> = [];
 
             // Collect all existing schemes
             existingNames.forEach(name => {
@@ -140,10 +140,10 @@ export class AddSecuritySchemeCommand extends BaseCommand {
      * Execute for OpenAPI 3.0/3.1
      */
     private executeForOpenApi30(oaiDoc: OpenApi30Document | OpenApi31Document): void {
-        let components: OpenApi30Components | OpenApi31Components = oaiDoc.getComponents();
+        let components: any = oaiDoc.getComponents();
         if (!components) {
             components = oaiDoc.createComponents();
-            oaiDoc.setComponents(components as any);
+            oaiDoc.setComponents(components);
         }
 
         let securitySchemes = components.getSecuritySchemes();

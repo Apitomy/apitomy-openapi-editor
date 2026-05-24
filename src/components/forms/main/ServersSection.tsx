@@ -21,11 +21,10 @@ import {
     Node,
     NodePathUtil,
     OpenApi30Server,
-    OpenApiServer,
     OpenApiServersParent,
     Server,
     ServerVariable
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import {useCommand} from '@hooks/useCommand';
 import {useSelection} from '@hooks/useSelection';
 import {ExpandablePanel} from '@components/common/ExpandablePanel';
@@ -71,7 +70,7 @@ export const ServersSection: React.FC<ServersSectionProps> = ({ parent, title = 
      * Get a server by URL
      */
     const getServer = (serverUrl: string): Server => {
-        const foundServer = servers.find((s: OpenApiServer) => s.getUrl() === serverUrl);
+        const foundServer = servers.find((s: any) => s.getUrl() === serverUrl);
         if (!foundServer) {
             throw new Error(`Server not found: ${serverUrl}`);
         }
@@ -199,7 +198,7 @@ export const ServersSection: React.FC<ServersSectionProps> = ({ parent, title = 
                             onSelectableRowChange={(_evt, idx) => handleOpenEditServerModal(idx)}
                             onSelectDataListItem={(_evt, idx) => handleOpenEditServerModal(idx)}
                         >
-                            {servers.map((server: OpenApiServer, index: number) => (
+                            {servers.map((server: any, index: number) => (
                                 <DataListItem
                                     key={index}
                                     id={`${index}`}

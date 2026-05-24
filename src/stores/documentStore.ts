@@ -3,7 +3,7 @@
  */
 
 import { create } from 'zustand/react';
-import { Document } from '@apicurio/data-models';
+import { Document } from '@apitomy/data-models';
 import { DocumentState } from '@models/DocumentTypes';
 
 interface DocumentStore extends DocumentState {

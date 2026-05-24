@@ -2,7 +2,7 @@
  * Service for managing OpenAPI documents
  */
 
-import { Document, Library } from '@apicurio/data-models';
+import { Document, Library } from '@apitomy/data-models';
 import { useDocumentStore } from '@stores/documentStore';
 import { useCommandStore } from '@stores/commandStore';
 import { ValidationProblem } from '@models/DocumentTypes';

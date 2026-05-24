@@ -2,7 +2,7 @@
  * Command to add a request body to an operation
  */
 
-import { Document, Node, NodePath, NodePathUtil } from '@apicurio/data-models';
+import { Document, Node, NodePath, NodePathUtil } from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

@@ -17,7 +17,7 @@ import {
     MenuToggle
 } from '@patternfly/react-core';
 import { EllipsisVIcon, PlusIcon, TrashIcon } from '@patternfly/react-icons';
-import {Extensible, Node, NodePathSegment, NodePathUtil} from '@apicurio/data-models';
+import {Extensible, Node, NodePathSegment, NodePathUtil} from '@apitomy/data-models';
 import { useCommand } from '@hooks/useCommand';
 import { ExpandablePanel } from '@components/common/ExpandablePanel';
 import { AddVendorExtensionModal } from '@components/modals/AddVendorExtensionModal';

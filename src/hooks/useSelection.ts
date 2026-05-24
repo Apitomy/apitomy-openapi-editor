@@ -4,7 +4,7 @@
 
 import { useSelectionStore } from '@stores/selectionStore';
 import { useEditorServices } from '@services/EditorContext';
-import { Node, NodePath } from '@apicurio/data-models';
+import { Node, NodePath } from '@apitomy/data-models';
 import { SelectionChangeEvent } from '@models/SelectionTypes';
 
 // Re-export SelectionChangeEvent for convenience

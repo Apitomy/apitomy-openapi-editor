@@ -9,7 +9,7 @@ import {
     NodePath,
     NodePathUtil,
     OpenApi31PathItem, OpenApi20PathItem
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

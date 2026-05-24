@@ -9,7 +9,7 @@ import {
     NodePathUtil,
     OpenApi30Operation,
     SecurityRequirement
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

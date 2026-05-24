@@ -10,7 +10,7 @@ import {
     OpenApi30Response,
     OpenApi30Schema,
     OpenApiPathItem
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 
 export class NavigationObjectResolverVisitor extends CombinedOpenApiVisitorAdapter {
     node: Node | undefined;

@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react';
 import { Form } from '@patternfly/react-core';
-import { Node, NodePathUtil, OpenApiDocument, OpenApi20Document } from '@apicurio/data-models';
+import { Node, NodePathUtil, OpenApiDocument, OpenApi20Document } from '@apitomy/data-models';
 import { useDocument } from '@hooks/useDocument';
 import { useCommand } from '@hooks/useCommand';
 import { PropertyInput } from '@components/common/PropertyInput';

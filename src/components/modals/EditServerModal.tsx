@@ -22,7 +22,7 @@ import {
     TabTitleText,
 } from '@patternfly/react-core';
 import { ServerUrl } from '@components/common/ServerUrl';
-import {ServerVariable} from "@apicurio/data-models";
+import {ServerVariable} from "@apitomy/data-models";
 
 export interface ServerVariableData {
     variable: ServerVariable;

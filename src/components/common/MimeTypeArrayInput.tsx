@@ -11,7 +11,7 @@ import {
 } from '@patternfly/react-core';
 import { PlusIcon } from '@patternfly/react-icons';
 import { AddMimeTypeModal } from '@components/modals/AddMimeTypeModal';
-import {NodePath} from "@apicurio/data-models";
+import {NodePath} from "@apitomy/data-models";
 import {useSelection} from "@hooks/useSelection.ts";
 
 interface MimeTypeArrayInputProps {

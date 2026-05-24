@@ -8,7 +8,7 @@ import {EllipsisVIcon} from '@patternfly/react-icons';
 import {useDocument} from '@hooks/useDocument';
 import {useSelection} from '@hooks/useSelection';
 import {useCommand} from '@hooks/useCommand';
-import {OpenApiSchema} from '@apicurio/data-models';
+import {OpenApiSchema} from '@apitomy/data-models';
 import {PropertyInput} from '@components/common/PropertyInput';
 import {DeleteSchemaCommand} from '@commands/DeleteSchemaCommand';
 

@@ -14,15 +14,16 @@ on:
 jobs:
   publish-demo:
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'Apitomy'
 
     steps:
-    - name: Checkout apicurio-openapi-editor
-      uses: actions/checkout@v4
+    - name: Checkout apitomy-openapi-editor
+      uses: actions/checkout@v6
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
-        node-version: '20'
+        node-version: '22'
         cache: 'npm'
 
     - name: Install dependencies
@@ -40,9 +41,9 @@ jobs:
         VITE_BASE_PATH: /openapi-editor/demo/
 
     - name: Checkout website repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
-        repository: Apicurio/apicurio.github.io
+        repository: Apitomy/apitomy.github.io
         token: ${{ secrets.ACCESS_TOKEN }}
         path: website
 
@@ -55,8 +56,8 @@ jobs:
     - name: Commit and push to website
       run: |
         cd website
-        git config user.name "GitHub Actions Bot"
-        git config user.email "actions@github.com"
+        git config user.name "apitomy-ci"
+        git config user.email "apitomy.ci@gmail.com"
         git add openapi-editor/demo
         if git diff --staged --quiet; then
           echo "No changes to commit"

@@ -2,7 +2,7 @@
  * Command to delete a vendor extension from any extensible node
  */
 
-import {Document, Extensible, Node, NodePath, NodePathUtil} from '@apicurio/data-models';
+import {Document, Extensible, Node, NodePath, NodePathUtil} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

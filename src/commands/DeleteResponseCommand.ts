@@ -2,7 +2,7 @@
  * Command to delete a response entry from an operation's responses container
  */
 
-import { Document, Library, Node, NodePath, NodePathUtil } from '@apicurio/data-models';
+import { Document, Library, Node, NodePath, NodePathUtil } from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

@@ -8,7 +8,7 @@ import {
     OpenApi20Document,
     OpenApi30Document,
     OpenApi31Document
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

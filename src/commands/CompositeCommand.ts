@@ -3,7 +3,7 @@
  * Useful for batch operations that should be undone/redone together
  */
 
-import { Document } from '@apicurio/data-models';
+import { Document } from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 import { ICommand } from './ICommand';
 

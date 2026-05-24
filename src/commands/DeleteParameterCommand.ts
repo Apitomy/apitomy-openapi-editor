@@ -10,7 +10,7 @@ import {
     NodePathUtil,
     OpenApiParameter,
     OpenApiParametersParent
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

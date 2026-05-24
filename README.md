@@ -1,10 +1,10 @@
-# Apicurio OpenAPI Editor
+# Apitomy OpenAPI Editor
 
 A reusable React component for visual OpenAPI editing that can be embedded in React applications.
 
 ## Overview
 
-The Apicurio OpenAPI Editor is a modern, React-based visual editor for OpenAPI specifications
+The Apitomy OpenAPI Editor is a modern, React-based visual editor for OpenAPI specifications
 (versions 2.0 and 3.0.x). It provides an intuitive interface for creating, editing, and managing
 OpenAPI documents without requiring direct YAML or JSON manipulation.
 
@@ -35,8 +35,8 @@ To quickly try out the OpenAPI Editor with a test application:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Apicurio/apicurio-openapi-editor.git
-cd apicurio-openapi-editor
+git clone https://github.com/Apitomy/apitomy-openapi-editor.git
+cd apitomy-openapi-editor
 
 # Install dependencies
 npm install
@@ -54,7 +54,7 @@ provides a full-featured demo of the OpenAPI Editor with sample data and all fea
 ## Usage
 
 ```tsx
-import { OpenAPIEditor, DocumentChangeEvent, SelectionChangeEvent } from '@apicurio/openapi-editor';
+import { OpenAPIEditor, DocumentChangeEvent, SelectionChangeEvent } from '@apitomy/openapi-editor';
 
 function App() {
     const handleChange = (event: DocumentChangeEvent) => {
@@ -99,7 +99,7 @@ This library requires the following peer dependencies to be installed by the con
 
 ```json
 {
-    "@apicurio/data-models": "^2.2.6",
+    "@apitomy/data-models": "^2.2.6",
     "@patternfly/react-core": "^6.0.0",
     "@patternfly/react-icons": "^6.0.0",
     "@patternfly/react-table": "^6.0.0",
@@ -121,6 +121,6 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## Links
 
-- [GitHub Repository](https://github.com/Apicurio/apicurio-openapi-editor)
-- [Issue Tracker](https://github.com/Apicurio/apicurio-openapi-editor/issues)
-- [Apicurio Project](https://www.apicur.io/)
+- [GitHub Repository](https://github.com/Apitomy/apitomy-openapi-editor)
+- [Issue Tracker](https://github.com/Apitomy/apitomy-openapi-editor/issues)
+- [Apitomy Project](https://www.apitomy.io/)

@@ -2,7 +2,7 @@
  * Base command class with selection tracking
  */
 
-import {Document, NodePath} from '@apicurio/data-models';
+import {Document, NodePath} from '@apitomy/data-models';
 import { ICommand } from './ICommand';
 import {SelectionChangeEvent} from '@models/SelectionTypes';
 

@@ -3,7 +3,7 @@
  */
 
 import { create } from 'zustand/react';
-import {Node, NodePath} from '@apicurio/data-models';
+import {Node, NodePath} from '@apitomy/data-models';
 import { SelectionState } from '@models/SelectionTypes';
 
 interface SelectionStore extends SelectionState {

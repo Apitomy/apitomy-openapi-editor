@@ -16,7 +16,7 @@ import { CodeEditor, Language } from '@patternfly/react-code-editor';
 import { useDocument } from '@hooks/useDocument';
 import { useSelection } from '@hooks/useSelection';
 import { useCommand } from '@hooks/useCommand';
-import { Library } from '@apicurio/data-models';
+import { Library } from '@apitomy/data-models';
 import { UpdateNodeCommand } from '@commands/UpdateNodeCommand';
 import * as YAML from 'yaml';
 import './SourceForm.css';

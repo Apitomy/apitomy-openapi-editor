@@ -25,9 +25,9 @@ export default defineConfig({
             'react/jsx-runtime': resolve(__dirname, './node_modules/react/jsx-runtime'),
             'zustand': resolve(__dirname, './node_modules/zustand'),
             'zustand/react': resolve(__dirname, './node_modules/zustand/react.js'),
-            '@apicurio/data-models': resolve(__dirname, './node_modules/@apicurio/data-models'),
+            '@apitomy/data-models': resolve(__dirname, './node_modules/@apitomy/data-models'),
         },
-        dedupe: ['react', 'react-dom', 'zustand', '@apicurio/data-models'],
+        dedupe: ['react', 'react-dom', 'zustand', '@apitomy/data-models'],
     },
     server: {
         port: 3000,

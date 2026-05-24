@@ -2,7 +2,7 @@
  * Command to add a new server to any node that supports servers
  */
 
-import {Document, Node, NodePath, NodePathUtil, OpenApi30Server, OpenApiServer} from '@apicurio/data-models';
+import {Document, Node, NodePath, NodePathUtil, OpenApi30Server, OpenApiServer} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

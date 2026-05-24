@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react';
 import { Checkbox, Form, FormGroup } from '@patternfly/react-core';
-import { OpenApi20Document } from '@apicurio/data-models';
+import { OpenApi20Document } from '@apitomy/data-models';
 import { useDocument } from '@hooks/useDocument';
 import { useCommand } from '@hooks/useCommand';
 import { useSelection } from '@hooks/useSelection';

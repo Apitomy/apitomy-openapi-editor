@@ -8,7 +8,7 @@ import {
     OpenApi30Document,
     OpenApi31Document,
     SecurityRequirement
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

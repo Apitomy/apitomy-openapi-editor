@@ -2,7 +2,7 @@
  * Command to add a vendor extension to any extensible node
  */
 
-import {Document, Extensible, Node, NodePath, NodePathUtil} from '@apicurio/data-models';
+import {Document, Extensible, Node, NodePath, NodePathUtil} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

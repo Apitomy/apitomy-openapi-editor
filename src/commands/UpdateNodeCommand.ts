@@ -2,7 +2,7 @@
  * Command to update a node with new content from source editor
  */
 
-import { Document, Node, NodePath, NodePathUtil, Library } from '@apicurio/data-models';
+import { Document, Node, NodePath, NodePathUtil, Library } from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 import { ClearNodeVisitor } from '@visitors/ClearNodeVisitor';
 

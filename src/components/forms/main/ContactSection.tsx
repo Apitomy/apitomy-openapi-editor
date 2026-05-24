@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react';
 import { Form } from '@patternfly/react-core';
-import { Node, NodePathUtil, OpenApiDocument } from '@apicurio/data-models';
+import { Node, NodePathUtil, OpenApiDocument } from '@apitomy/data-models';
 import { useDocument } from '@hooks/useDocument';
 import { PropertyInput } from '@components/common/PropertyInput';
 import { ExpandablePanel } from '@components/common/ExpandablePanel';

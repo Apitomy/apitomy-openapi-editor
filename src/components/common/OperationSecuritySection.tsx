@@ -23,7 +23,7 @@ import {
     NodePathUtil,
     OpenApi30Operation,
     SecurityRequirement
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { useCommand } from '@hooks/useCommand';
 import { ExpandablePanel } from '@components/common/ExpandablePanel';
 import { SecurityRequirementModal, SecurityRequirementData } from '@components/modals/SecurityRequirementModal';

@@ -4,7 +4,7 @@
 
 import { useDocumentStore } from '@stores/documentStore';
 import { useEditorServices } from '@services/EditorContext';
-import { ModelTypeUtil } from '@apicurio/data-models';
+import { ModelTypeUtil } from '@apitomy/data-models';
 
 /**
  * OpenAPI specification version

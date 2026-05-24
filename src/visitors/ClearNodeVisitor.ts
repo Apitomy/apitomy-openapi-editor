@@ -9,7 +9,7 @@ import {
     OpenApi30PathItem,
     OpenApi30Response,
     OpenApi30Schema,
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 
 /**
  * Visitor that clears all properties from nodes

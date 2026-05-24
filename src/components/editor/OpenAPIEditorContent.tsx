@@ -62,7 +62,7 @@ export const OpenAPIEditorContent: React.FC<OpenAPIEditorProps> = ({
     }, [selectedPath, selectedPropertyName, onSelectionChange]);
 
     return (
-        <div className="apicurio-openapi-editor">
+        <div className="apitomy-openapi-editor">
             {/* Toolbar */}
             <EditorToolbar
                 currentView={currentView}

@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { SecurityScheme } from '@apicurio/data-models';
+import { SecurityScheme } from '@apitomy/data-models';
 
 interface SecuritySchemeDetailsProps {
     scheme: SecurityScheme;

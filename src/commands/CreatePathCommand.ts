@@ -2,7 +2,7 @@
  * Command to create a new path item in the document
  */
 
-import {Document, OpenApi30PathItem, OpenApiDocument} from '@apicurio/data-models';
+import {Document, OpenApi30PathItem, OpenApiDocument} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

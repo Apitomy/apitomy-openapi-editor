@@ -1,11 +1,11 @@
 # Phase 1 Complete - Project Foundation
 
-Phase 1 of the Apicurio OpenAPI Editor project has been successfully completed!
+Phase 1 of the Apitomy OpenAPI Editor project has been successfully completed!
 
 ## What Was Accomplished
 
 ### 1. GitHub Repository Created
-- **Repository**: https://github.com/Apicurio/apicurio-openapi-editor
+- **Repository**: https://github.com/Apitomy/apitomy-openapi-editor
 - **Status**: Private (will be made public later)
 - **License**: Apache 2.0
 
@@ -14,7 +14,7 @@ Phase 1 of the Apicurio OpenAPI Editor project has been successfully completed!
 - **Framework**: React 19.x with TypeScript 5.x
 - **UI Framework**: PatternFly 6.x
 - **State Management**: Zustand 5.x
-- **Data Models**: @apicurio/data-models 2.2.6
+- **Data Models**: @apitomy/data-models 2.2.6
 
 ### 3. Development Environment Configured
 - **TypeScript**: Strict mode enabled with comprehensive compiler options
@@ -24,7 +24,7 @@ Phase 1 of the Apicurio OpenAPI Editor project has been successfully completed!
 
 ### 4. Project Structure Established
 ```
-apicurio-openapi-editor/
+apitomy-openapi-editor/
 ├── docs/                       # Documentation
 │   ├── IMPLEMENTATION_PLAN.md
 │   └── PHASE1_COMPLETE.md
@@ -52,9 +52,9 @@ apicurio-openapi-editor/
 
 ### 6. Build Configuration
 - **Library Mode**: Configured to output as npm package
-- **Package Name**: `@apicurio/openapi-editor`
+- **Package Name**: `@apitomy/openapi-editor`
 - **Peer Dependencies**: React, PatternFly components
-- **Direct Dependencies**: @apicurio/data-models, Zustand
+- **Direct Dependencies**: @apitomy/data-models, Zustand
 - **Output Formats**: ESM and CommonJS with TypeScript declarations
 
 ### 7. Initial Component Created
@@ -99,7 +99,7 @@ Phase 2 will focus on building the foundation for the editor:
 ## Dependencies Installed
 
 ### Production Dependencies
-- `@apicurio/data-models@2.2.6` - OpenAPI parsing and commands
+- `@apitomy/data-models@2.2.6` - OpenAPI parsing and commands
 - `zustand@5.0.9` - State management
 
 ### Peer Dependencies (for development)
@@ -117,7 +117,7 @@ Phase 2 will focus on building the foundation for the editor:
 
 ## Key Decisions Made
 
-1. **Package Scope**: `@apicurio/openapi-editor` (scoped package)
+1. **Package Scope**: `@apitomy/openapi-editor` (scoped package)
 2. **Version**: Starting at 0.1.0 (pre-release)
 3. **UI Pattern**: Modal dialogs for complex operations, inline editing for simple fields
 4. **State Management**: Zustand (simpler than Redux, more structured than Context alone)
@@ -126,7 +126,7 @@ Phase 2 will focus on building the foundation for the editor:
 7. **Path Aliases**: Clean imports using @ prefixes
 
 ## GitHub Repository
-- https://github.com/Apicurio/apicurio-openapi-editor
+- https://github.com/Apitomy/apitomy-openapi-editor
 - Initial commit: 72bba1e
 - Branch: main
 

@@ -1,8 +1,8 @@
 /**
- * Node utility functions for working with @apicurio/data-models Node objects
+ * Node utility functions for working with @apitomy/data-models Node objects
  */
 
-import { Document, Node, NodePath, VisitorUtil } from '@apicurio/data-models';
+import { Document, Node, NodePath, VisitorUtil } from '@apitomy/data-models';
 import { capitalize } from './stringUtils';
 import { NearestNodeVisitor } from '@visitors/NearestNodeVisitor';
 import { NearestOperationVisitor } from '@visitors/NearestOperationVisitor';

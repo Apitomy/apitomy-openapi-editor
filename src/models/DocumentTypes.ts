@@ -2,14 +2,14 @@
  * Types related to OpenAPI documents
  */
 
-import { Document } from '@apicurio/data-models';
+import { Document } from '@apitomy/data-models';
 
 /**
  * Represents the state of an OpenAPI document in the editor
  */
 export interface DocumentState {
     /**
-     * The parsed OpenAPI document (from apicurio-data-models)
+     * The parsed OpenAPI document (from apitomy-data-models)
      */
     document: Document | null;
 

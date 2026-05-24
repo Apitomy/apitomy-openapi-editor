@@ -2,7 +2,7 @@
  * Styles for the OpenAPI Editor component
  */
 
-.apicurio-openapi-editor {
+.apitomy-openapi-editor {
     display: flex;
     flex-direction: column;
     height: 100%;

@@ -12,7 +12,7 @@ import {
     EmptyStateFooter,
     Form
 } from '@patternfly/react-core';
-import { OpenApi30Operation, OpenApiParameter } from '@apicurio/data-models';
+import { OpenApi30Operation, OpenApiParameter } from '@apitomy/data-models';
 import { PropertyInput } from '@components/common/PropertyInput';
 import { ParameterSection } from '@components/common/ParameterSection';
 import { RequestBodySection } from '@components/common/RequestBodySection';

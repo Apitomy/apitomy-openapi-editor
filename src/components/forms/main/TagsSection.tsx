@@ -17,7 +17,7 @@ import {
     MenuToggle
 } from '@patternfly/react-core';
 import { EllipsisVIcon, PlusIcon, TagIcon, TrashIcon } from '@patternfly/react-icons';
-import {NodePathUtil, OpenApiDocument, Tag} from '@apicurio/data-models';
+import {NodePathUtil, OpenApiDocument, Tag} from '@apitomy/data-models';
 import { useDocument } from '@hooks/useDocument';
 import { useCommand } from '@hooks/useCommand';
 import { useSelection } from '@hooks/useSelection';

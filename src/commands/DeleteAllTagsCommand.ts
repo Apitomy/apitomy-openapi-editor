@@ -2,7 +2,7 @@
  * Command to delete all tags from the document
  */
 
-import { Document, Library, OpenApiDocument, Tag } from '@apicurio/data-models';
+import { Document, Library, OpenApiDocument, Tag } from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

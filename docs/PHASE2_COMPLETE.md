@@ -1,6 +1,6 @@
 # Phase 2 Complete - Core Infrastructure
 
-Phase 2 of the Apicurio OpenAPI Editor project has been successfully completed!
+Phase 2 of the Apitomy OpenAPI Editor project has been successfully completed!
 
 ## What Was Accomplished
 
@@ -28,7 +28,7 @@ Phase 2 of the Apicurio OpenAPI Editor project has been successfully completed!
 ### 2. Service Layer Implemented
 
 **DocumentService** (`src/services/DocumentService.ts`)
-- Load and parse OpenAPI documents using `@apicurio/data-models`
+- Load and parse OpenAPI documents using `@apitomy/data-models`
 - Serialize documents to JSON/object
 - Validate documents and map validation problems
 - Integrates with Zustand document store
@@ -86,7 +86,7 @@ Created comprehensive type definitions:
 - `CommandTypes.ts` - Command history entries
 - `UITypes.ts` - UI state and modal types
 
-### 6. Integration with @apicurio/data-models v2.2.6
+### 6. Integration with @apitomy/data-models v2.2.6
 
 Successfully integrated with the latest data-models library:
 - Using `ICommand` interface instead of `Command` class
@@ -133,7 +133,7 @@ Successfully integrated with the latest data-models library:
 ## What's Working
 
 1. **Document Loading**: Can load OpenAPI documents (JSON object or string)
-2. **Document Parsing**: Uses apicurio-data-models to parse into Document object
+2. **Document Parsing**: Uses apitomy-data-models to parse into Document object
 3. **State Management**: Reactive state updates via Zustand
 4. **Service Access**: Services available via React Context and hooks
 5. **UI Layout**: PatternFly masthead with title and toolbar

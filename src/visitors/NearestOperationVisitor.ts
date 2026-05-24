@@ -3,7 +3,7 @@
  * This is useful for determining which operation (GET, POST, etc.) is being selected.
  */
 
-import { CombinedOpenApiVisitorAdapter, Node } from '@apicurio/data-models';
+import { CombinedOpenApiVisitorAdapter, Node } from '@apitomy/data-models';
 
 export class NearestOperationVisitor extends CombinedOpenApiVisitorAdapter {
     found: Node | null = null;

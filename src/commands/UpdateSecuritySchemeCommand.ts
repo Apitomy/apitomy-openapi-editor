@@ -10,7 +10,7 @@ import {
     OpenApi30Document,
     OpenApi30SecurityScheme,
     OpenApi31Document
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 import { SecuritySchemeData } from '@components/modals/SecuritySchemeModal';
 

@@ -5,7 +5,7 @@
 import React, {ReactNode} from 'react';
 import {Badge, Button} from '@patternfly/react-core';
 import {AngleDownIcon, AngleRightIcon} from '@patternfly/react-icons';
-import {NodePath, NodePathUtil} from '@apicurio/data-models';
+import {NodePath, NodePathUtil} from '@apitomy/data-models';
 import {useSelection} from '@hooks/useSelection';
 import './ExpandablePanel.css';
 

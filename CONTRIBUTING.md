@@ -1,6 +1,6 @@
-# Contributing to Apicurio OpenAPI Editor
+# Contributing to Apitomy OpenAPI Editor
 
-Thank you for your interest in contributing to the Apicurio OpenAPI Editor!
+Thank you for your interest in contributing to the Apitomy OpenAPI Editor!
 
 ## Getting Started
 

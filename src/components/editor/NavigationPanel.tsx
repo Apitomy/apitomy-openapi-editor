@@ -20,7 +20,7 @@ import {
     OpenApi31Document,
     OpenApi20Document,
     OpenApi20Definitions
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { CreatePathModal } from '@components/modals/CreatePathModal';
 import { CreateSchemaModal } from '@components/modals/CreateSchemaModal';
 import { CreatePathCommand } from '@commands/CreatePathCommand';

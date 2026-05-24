@@ -2,7 +2,7 @@
  * Types related to node selection in the editor
  */
 
-import {Node, NodePath} from '@apicurio/data-models';
+import {Node, NodePath} from '@apitomy/data-models';
 
 /**
  * Represents the current selection state in the editor

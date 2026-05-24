@@ -16,7 +16,7 @@ Phase 4 has been successfully completed. The core editing features have been imp
 - Changed note to indicate "Changes are automatically saved"
 
 **Implementation Details:**
-- Uses `ChangePropertyCommand` from @apicurio/data-models
+- Uses `ChangePropertyCommand` from @apitomy/data-models
 - Casts document to `OpenApi30Document` for proper typing
 - Gets info object via `oaiDoc.getInfo()`
 - Each field change executes a command with descriptive message
@@ -75,7 +75,7 @@ Based on user preferences from Phase 4 planning:
 3. **Modal dialogs** - Prepared for add operations (deferred in this phase)
 4. **Path metadata focus** - Showing summary, description, and operations list
 
-## API Usage from @apicurio/data-models
+## API Usage from @apitomy/data-models
 
 ### Proper Document API Usage:
 ```typescript
@@ -159,7 +159,7 @@ The next phase will implement:
 
 ## Code Quality
 
-- All components use proper TypeScript types from @apicurio/data-models
+- All components use proper TypeScript types from @apitomy/data-models
 - Consistent use of command pattern for all mutations
 - Proper error handling for missing paths/documents
 - Clear separation between path extraction and display logic

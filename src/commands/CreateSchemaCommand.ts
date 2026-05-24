@@ -9,7 +9,7 @@ import {
     ModelTypeUtil,
     OpenApiDocument,
     OpenApi20Document, OpenApi31Document, OpenApiComponents
-} from '@apicurio/data-models';
+} from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

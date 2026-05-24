@@ -2,7 +2,7 @@
  * Command to delete a request body from an operation
  */
 
-import { Document, Library, Node, NodePath, NodePathUtil } from '@apicurio/data-models';
+import { Document, Library, Node, NodePath, NodePathUtil } from '@apitomy/data-models';
 import { BaseCommand } from './BaseCommand';
 
 /**

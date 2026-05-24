@@ -1,9 +1,9 @@
-# Apicurio OpenAPI Editor - Implementation Plan
+# Apitomy OpenAPI Editor - Implementation Plan
 
 ## Project Overview
 
 A reusable React component for visual OpenAPI editing that can be embedded in React applications. This is a
-reimplementation of the OpenAPI editor from apicurio-registry/ui/ui-editors, modernized for React with PatternFly 6.
+reimplementation of the OpenAPI editor from apitomy-registry/ui/ui-editors, modernized for React with PatternFly 6.
 
 ## Technology Stack
 
@@ -11,13 +11,13 @@ reimplementation of the OpenAPI editor from apicurio-registry/ui/ui-editors, mod
 - **Vite** for build tooling
 - **PatternFly 6** for UI components
 - **Zustand** for state management
-- **@apicurio/data-models v2.2.6** for OpenAPI parsing and command pattern
+- **@apitomy/data-models v2.2.6** for OpenAPI parsing and command pattern
 
 ## Architecture Decisions
 
 ### State Management Strategy
 
-- **Primary State**: OpenAPI document (from `@apicurio/data-models`) stored in Zustand
+- **Primary State**: OpenAPI document (from `@apitomy/data-models`) stored in Zustand
 - **Commands**: Use `CommandFactory` and `ICommand` from data-models v2.2.6
 - **Command History**: Implement custom undo/redo stack (OtEngine doesn't exist in 2.2.6)
 - **Selection State**: Track current selection (path, definition, operation, etc.) in Zustand
@@ -45,7 +45,7 @@ reimplementation of the OpenAPI editor from apicurio-registry/ui/ui-editors, mod
 ## Project Structure
 
 ```
-apicurio-openapi-editor/
+apitomy-openapi-editor/
 ├── docs/                       # Documentation
 ├── src/
 │   ├── components/             # React components
@@ -68,7 +68,7 @@ apicurio-openapi-editor/
 ### Phase 1: Project Foundation (Setup & Infrastructure)
 
 #### Step 1: Create GitHub Repository
-- Create private repository in Apicurio organization: `apicurio-openapi-editor`
+- Create private repository in Apitomy organization: `apitomy-openapi-editor`
 - Initialize with Apache 2.0 license
 - Add initial .gitignore for Node.js/TypeScript
 
@@ -80,7 +80,7 @@ apicurio-openapi-editor/
 
 #### Step 3: Install Dependencies
 - Install PatternFly 6 React components
-- Install @apicurio/data-models@2.2.6
+- Install @apitomy/data-models@2.2.6
 - Install Zustand
 - Install dev dependencies (testing, etc.)
 
