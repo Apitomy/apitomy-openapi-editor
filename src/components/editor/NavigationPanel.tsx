@@ -92,21 +92,18 @@ export const NavigationPanel: React.FC = () => {
     const schemas = getSchemas().sort();
 
     /**
-     * Filter items based on filter text
-     */
-    const filterItems = (items: string[]): string[] => {
-        if (!filterText.trim()) {
-            return items;
-        }
-        const searchTerm = filterText.toLowerCase();
-        return items.filter(item => item.toLowerCase().includes(searchTerm));
-    };
-
-    /**
      * Filtered paths and schemas
      */
-    const filteredPaths = useMemo(() => filterItems(paths), [paths, filterText]);
-    const filteredSchemas = useMemo(() => filterItems(schemas), [schemas, filterText]);
+    const filteredPaths = useMemo(() => {
+        if (!filterText.trim()) return paths;
+        const searchTerm = filterText.toLowerCase();
+        return paths.filter(item => item.toLowerCase().includes(searchTerm));
+    }, [paths, filterText]);
+    const filteredSchemas = useMemo(() => {
+        if (!filterText.trim()) return schemas;
+        const searchTerm = filterText.toLowerCase();
+        return schemas.filter(item => item.toLowerCase().includes(searchTerm));
+    }, [schemas, filterText]);
 
     /**
      * Handle path selection

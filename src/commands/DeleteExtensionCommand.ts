@@ -41,7 +41,7 @@ export class DeleteExtensionCommand extends BaseCommand {
         }
 
         const extensions = (parent as unknown as Extensible).getExtensions();
-        if (extensions && extensions.hasOwnProperty(this.name)) {
+        if (extensions && Object.prototype.hasOwnProperty.call(extensions, this.name)) {
             this.oldValue = extensions[this.name];
         }
         (parent as unknown as Extensible).removeExtension(this.name);

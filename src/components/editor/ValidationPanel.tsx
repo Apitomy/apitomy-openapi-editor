@@ -17,6 +17,7 @@ import { useValidation } from '@hooks/useValidation';
 import { useSelection } from '@hooks/useSelection';
 import { ValidationProblem, ValidationProblemSeverity } from '@apitomy/data-models';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface ValidationPanelProps {
 }
 

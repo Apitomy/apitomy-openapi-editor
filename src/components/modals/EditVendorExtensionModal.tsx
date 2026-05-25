@@ -84,7 +84,7 @@ export const EditVendorExtensionModal: React.FC<EditVendorExtensionModalProps> =
         if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
             try {
                 return JSON.parse(trimmed);
-            } catch (e) {
+            } catch {
                 // Return null to indicate parse error
                 return null;
             }

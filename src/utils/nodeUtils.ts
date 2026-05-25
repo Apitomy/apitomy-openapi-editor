@@ -13,7 +13,7 @@ import { NearestOperationVisitor } from '@visitors/NearestOperationVisitor';
  * @param propertyName The property name (e.g., "summary")
  * @returns The getter function if it exists, otherwise undefined
  */
-export function getGetter(node: Node, propertyName: string): Function | undefined {
+export function getGetter(node: Node, propertyName: string): ((...args: any[]) => any) | undefined {
     const getterName = 'get' + capitalize(propertyName);
 
     if (typeof (node as any)[getterName] === 'function') {
@@ -29,7 +29,7 @@ export function getGetter(node: Node, propertyName: string): Function | undefine
  * @param propertyName The property name (e.g., "summary")
  * @returns The setter function if it exists, otherwise undefined
  */
-export function getSetter(node: Node, propertyName: string): Function | undefined {
+export function getSetter(node: Node, propertyName: string): ((...args: any[]) => any) | undefined {
     const setterName = 'set' + capitalize(propertyName);
 
     if (typeof (node as any)[setterName] === 'function') {
@@ -45,7 +45,7 @@ export function getSetter(node: Node, propertyName: string): Function | undefine
  * @param propertyName The property name (e.g., "info")
  * @returns The creator function if it exists, otherwise undefined
  */
-export function getCreator(node: Node, propertyName: string): Function | undefined {
+export function getCreator(node: Node, propertyName: string): ((...args: any[]) => any) | undefined {
     const creatorName = 'create' + capitalize(propertyName);
 
     if (typeof (node as any)[creatorName] === 'function') {

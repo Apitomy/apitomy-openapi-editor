@@ -45,7 +45,7 @@ export class AddExtensionCommand extends BaseCommand {
         }
 
         const extensions = (parent as unknown as Extensible).getExtensions();
-        this.existed = extensions && extensions.hasOwnProperty(this.name);
+        this.existed = extensions && Object.prototype.hasOwnProperty.call(extensions, this.name);
         if (this.existed) {
             this.oldValue = extensions[this.name];
         }

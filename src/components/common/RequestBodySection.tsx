@@ -335,8 +335,8 @@ export const RequestBodySection: React.FC<RequestBodySectionProps> = ({ operatio
                                 aria-label="Content types list"
                                 isCompact
                                 selectedDataListItemId=""
-                                onSelectableRowChange={(_evt, idx) => {idx}}
-                                onSelectDataListItem={(_evt, idx) => {idx}}
+                                onSelectableRowChange={() => {}}
+                                onSelectDataListItem={() => {}}
                             >
                                 {mediaTypeNames.map((mtName, index) => {
                                     const content = requestBody.getContent();

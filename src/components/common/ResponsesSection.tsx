@@ -540,8 +540,8 @@ export const ResponsesSection: React.FC<ResponsesSectionProps> = ({ operation })
                                             aria-label="Response headers list"
                                             isCompact
                                             selectedDataListItemId=""
-                                            onSelectableRowChange={(_evt, idx) => { idx; }}
-                                            onSelectDataListItem={(_evt, idx) => { idx; }}
+                                            onSelectableRowChange={() => {}}
+                                            onSelectDataListItem={() => {}}
                                         >
                                             {activeHeaderNames.map((headerName, index) => {
                                                 const responseNode = responses?.getItem?.(statusCode);
@@ -682,8 +682,8 @@ export const ResponsesSection: React.FC<ResponsesSectionProps> = ({ operation })
                                             aria-label="Response content types list"
                                             isCompact
                                             selectedDataListItemId=""
-                                            onSelectableRowChange={(_evt, idx) => { idx; }}
-                                            onSelectDataListItem={(_evt, idx) => { idx; }}
+                                            onSelectableRowChange={() => {}}
+                                            onSelectDataListItem={() => {}}
                                         >
                                             {activeMediaTypeNames.map((mtName, index) => {
                                                 const responseNode = responses?.getItem?.(statusCode);

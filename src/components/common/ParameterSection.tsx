@@ -116,8 +116,8 @@ export const ParameterSection: React.FC<ParameterSectionProps> = ({
                         aria-label={`${location} parameters list`}
                         isCompact
                         selectedDataListItemId=""
-                        onSelectableRowChange={(_evt, idx) => {idx}}
-                        onSelectDataListItem={(_evt, idx) => {idx}}
+                        onSelectableRowChange={() => {}}
+                        onSelectDataListItem={() => {}}
                     >
                         {parameters.map((param: any, index: number) => {
                             const paramName = param.getName?.() || param.name || 'Unnamed';

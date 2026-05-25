@@ -113,7 +113,7 @@ export const SourceForm: React.FC = () => {
                 YAML.parse(source);
             }
             return true;
-        } catch (error) {
+        } catch {
             return false;
         }
     };
@@ -138,7 +138,7 @@ export const SourceForm: React.FC = () => {
             } else {
                 return YAML.stringify(obj, { indent: 2 });
             }
-        } catch (error) {
+        } catch {
             // If conversion fails, return the original source
             return source;
         }
@@ -267,8 +267,8 @@ export const SourceForm: React.FC = () => {
             const formatted = convertFormat(currentSource, format, format);
             setCurrentSource(formatted);
             setIsDirty(formatted !== originalSource);
-        } catch (error) {
-            console.error('Failed to format source:', error);
+        } catch (err) {
+            console.error('Failed to format source:', err);
         }
     };
 
@@ -319,8 +319,8 @@ export const SourceForm: React.FC = () => {
             // Update the original source to the current source (now saved)
             setOriginalSource(currentSource);
             setIsDirty(false);
-        } catch (error) {
-            console.error('Failed to save source changes:', error);
+        } catch (err) {
+            console.error('Failed to save source changes:', err);
             // TODO: Show error message to user
         }
     };

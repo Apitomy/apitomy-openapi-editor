@@ -79,7 +79,7 @@ export const AddVendorExtensionModal: React.FC<AddVendorExtensionModalProps> = (
         if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
             try {
                 return JSON.parse(trimmed);
-            } catch (e) {
+            } catch {
                 // Return null to indicate parse error
                 return null;
             }
