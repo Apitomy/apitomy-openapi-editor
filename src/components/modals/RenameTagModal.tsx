@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- modal/form state initialization */
 /**
  * Modal dialog for renaming a tag
  */
@@ -47,9 +48,7 @@ export const RenameTagModal: React.FC<RenameTagModalProps> = ({ isOpen, currentN
     const [tagName, setTagName] = useState('');
     const [validated, setValidated] = useState<'default' | 'success' | 'error'>('default');
 
-    /**
-     * Update tag name when currentName changes
-     */
+     
     useEffect(() => {
         if (isOpen) {
             setTagName(currentName);

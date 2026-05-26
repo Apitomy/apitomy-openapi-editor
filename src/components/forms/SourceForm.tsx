@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/set-state-in-effect, react-hooks/exhaustive-deps -- intentional state sync patterns */
+ 
 /**
  * Source form for editing OpenAPI source code
  */
@@ -149,6 +151,7 @@ export const SourceForm: React.FC = () => {
      * Note: We do NOT include 'format' in the dependency array because format changes
      * are handled by handleFormatChange, which converts the current editor contents
      */
+     
     useEffect(() => {
         // Clear any pending validation
         if (validationTimerRef.current !== null) {
@@ -160,6 +163,7 @@ export const SourceForm: React.FC = () => {
         setOriginalSource(source);
         setCurrentSource(source);
         setIsDirty(false);
+     
         setIsValid(true);
     }, [document, navigationObject]);
 
@@ -187,6 +191,7 @@ export const SourceForm: React.FC = () => {
     /**
      * Observe theme changes by watching the HTML element's class attribute
      */
+     
     useEffect(() => {
         if (typeof window === 'undefined' || !window.document?.documentElement) {
             return;

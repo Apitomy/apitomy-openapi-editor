@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- modal/form state initialization */
 /**
  * Path form for editing path metadata and operations
  */
@@ -80,6 +81,7 @@ export const PathForm: React.FC = () => {
     const [isPathMenuOpen, setIsPathMenuOpen] = useState(false);
 
     // Sync operation tab when selection changes externally
+     
     useEffect(() => {
         if (!selectedPath || !pathItem || !document) return;
 

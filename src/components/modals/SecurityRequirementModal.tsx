@@ -1,3 +1,4 @@
+ 
 /**
  * Modal for creating or editing a security requirement
  */
@@ -109,6 +110,7 @@ export const SecurityRequirementModal: React.FC<SecurityRequirementModalProps> =
             });
             setSchemeSelections(selections);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional: only re-sync on modal open
     }, [isOpen, editData]);
 
     /**

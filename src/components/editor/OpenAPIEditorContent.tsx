@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps -- intentional: run once on mount */
+ 
 /**
  * OpenAPI Editor content (wrapped by EditorProvider)
  */
@@ -30,6 +32,7 @@ export const OpenAPIEditorContent: React.FC<OpenAPIEditorProps> = ({
         if (initialContent) {
             loadDocument(initialContent, true);
             selectRoot();
+     
         }
     }, [initialContent]); // Only run on initial load
 
@@ -46,7 +49,7 @@ export const OpenAPIEditorContent: React.FC<OpenAPIEditorProps> = ({
                 getContent: () => toObject(),
             });
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+         
     }, [version]);
 
     /**

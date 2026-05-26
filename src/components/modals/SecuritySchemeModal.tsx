@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- modal/form state initialization */
 /**
  * Modal for creating or editing a security scheme
  */
@@ -115,6 +116,7 @@ export const SecuritySchemeModal: React.FC<SecuritySchemeModalProps> = ({
     /**
      * Load edit data when modal opens in edit mode
      */
+     
     useEffect(() => {
         if (isOpen && editData) {
             setName(editData.name || '');

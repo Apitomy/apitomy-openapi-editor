@@ -52,12 +52,6 @@ export const SecuritySection: React.FC = () => {
     const { executeCommand } = useCommand();
     const { select } = useSelection();
 
-    if (!document) {
-        return null;
-    }
-
-    const oaiDoc = document as OpenApiDocument;
-
     const [isSchemesExpanded, setIsSchemesExpanded] = useState(true);
     const [isRequirementsExpanded, setIsRequirementsExpanded] = useState(true);
     const [openSchemeDropdownIndex, setOpenSchemeDropdownIndex] = useState<number | null>(null);
@@ -68,6 +62,12 @@ export const SecuritySection: React.FC = () => {
     const [isRequirementModalOpen, setIsRequirementModalOpen] = useState(false);
     const [editRequirementData, setEditRequirementData] = useState<SecurityRequirementData | null>(null);
     const [editRequirementIndex, setEditRequirementIndex] = useState<number | undefined>(undefined);
+
+    if (!document) {
+        return null;
+    }
+
+    const oaiDoc = document as OpenApiDocument;
 
     /**
      * Get security schemes from the document, sorted alphabetically by name

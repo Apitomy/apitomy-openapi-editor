@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- modal/form state initialization */
 /**
  * Modal for adding or editing a response header
  */
@@ -56,6 +57,7 @@ export const AddResponseHeaderModal: React.FC<AddResponseHeaderModalProps> = ({
     /**
      * Initialize state when modal opens
      */
+     
     useEffect(() => {
         if (isOpen) {
             setHeaderName(initialName || '');

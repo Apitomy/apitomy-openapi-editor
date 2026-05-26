@@ -39,19 +39,19 @@ export const TagsSection: React.FC = () => {
     const { executeCommand } = useCommand();
     const { select } = useSelection();
 
-    if (!document) {
-        return null;
-    }
-
-    const oaiDoc = document as OpenApiDocument;
-    const tags = oaiDoc.getTags() || [];
-
     const [isExpanded, setIsExpanded] = useState(true);
     const [isNewTagModalOpen, setIsNewTagModalOpen] = useState(false);
     const [openDropdownIndex, setOpenDropdownIndex] = useState<number | null>(null);
     const [renameTagName, setRenameTagName] = useState<string | null>(null);
     const [editTagName, setEditTagName] = useState<string | null>(null);
     const [editTagDescription, setEditTagDescription] = useState<string>('');
+
+    if (!document) {
+        return null;
+    }
+
+    const oaiDoc = document as OpenApiDocument;
+    const tags = oaiDoc.getTags() || [];
 
     /**
      * Handle creating a new tag

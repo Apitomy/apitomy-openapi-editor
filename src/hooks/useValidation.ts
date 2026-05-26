@@ -14,9 +14,10 @@ const validationService = new ValidationService();
 export function useValidation(): ValidationResult {
     const { document, version } = useDocument();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- version triggers re-validation on document mutation
+     
     const validationResult = useMemo(() => {
         return validationService.validate(document);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional: version triggers re-validation
     }, [document, version]);
 
     return validationResult;

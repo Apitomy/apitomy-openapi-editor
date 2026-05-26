@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- modal/form state initialization */
 /**
  * Modal dialog for creating or editing a parameter (query, header, cookie, path)
  */
@@ -70,6 +71,7 @@ export const ParameterModal: React.FC<ParameterModalProps> = ({
     /**
      * Initialize form fields when modal opens
      */
+     
     useEffect(() => {
         if (isOpen) {
             if (mode === 'edit') {

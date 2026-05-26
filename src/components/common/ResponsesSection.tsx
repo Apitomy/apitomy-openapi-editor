@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- modal/form state initialization */
 /**
  * Responses section for editing responses on an operation
  */
@@ -226,6 +227,7 @@ export const ResponsesSection: React.FC<ResponsesSectionProps> = ({ operation })
     const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
 
     // Auto-select first tab when responses change
+     
     useEffect(() => {
         if (responseCodes.length > 0 && !responseCodes.includes(activeTab as string)) {
             setActiveTab(responseCodes[0]);

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- modal/form state initialization */
 /**
  * Modal dialog for editing a server
  */
@@ -81,6 +82,7 @@ export const EditServerModal: React.FC<EditServerModalProps> = ({
     /**
      * Update state when modal opens or props change
      */
+     
     useEffect(() => {
         if (isOpen) {
             setDescription(currentDescription || '');

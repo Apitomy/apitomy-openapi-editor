@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- modal/form state initialization */
 /**
  * Modal for editing the schema of a media type entry
  */
@@ -47,6 +48,7 @@ export const EditMediaTypeSchemaModal: React.FC<EditMediaTypeSchemaModalProps> =
     /**
      * Initialize state when modal opens
      */
+     
     useEffect(() => {
         if (isOpen) {
             if (currentSchemaRef) {

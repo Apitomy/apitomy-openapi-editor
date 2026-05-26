@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/set-state-in-effect, react-hooks/exhaustive-deps -- intentional state sync patterns */
+ 
 /**
  * Reusable component for editing a single property of a model
  */
@@ -98,8 +100,10 @@ export const PropertyInput: React.FC<PropertyInputProps> = ({
     /**
      * Update local state when model changes (e.g., from undo/redo or external changes)
      */
+     
     useEffect(() => {
         const newValue = getCurrentValue();
+     
         setValue(newValue);
     }, [version, model, propertyName]); // Re-run when document version changes (undo/redo), model, or propertyName changes
 

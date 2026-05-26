@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- modal/form state initialization */
 /**
  * Modal dialog for editing a tag's description
  */
@@ -60,6 +61,7 @@ export const EditTagDescriptionModal: React.FC<EditTagDescriptionModalProps> = (
     /**
      * Update description when modal opens or currentDescription changes
      */
+     
     useEffect(() => {
         if (isOpen) {
             setDescription(currentDescription || '');
