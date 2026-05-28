@@ -1,0 +1,58 @@
+name: Publish Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+  workflow_dispatch:
+
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'Apitomy'
+
+    steps:
+      - name: Checkout apitomy-openapi-editor
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install MkDocs and dependencies
+        run: |
+          pip install mkdocs>=1.5.0
+          pip install mkdocs-material>=9.0.0
+          pip install pymdown-extensions
+
+      - name: Build documentation
+        run: mkdocs build --strict
+
+      - name: Checkout website repository
+        uses: actions/checkout@v6
+        with:
+          repository: Apitomy/apitomy.github.io
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: website
+
+      - name: Copy generated docs to website
+        run: |
+          rm -rf website/projects/openapi-editor/docs
+          mkdir -p website/projects/openapi-editor
+          cp -r site website/projects/openapi-editor/docs
+
+      - name: Commit and push to website
+        run: |
+          cd website
+          git config user.name "apitomy-ci"
+          git config user.email "apitomy.ci@gmail.com"
+          git add projects/openapi-editor/docs
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update OpenAPI Editor documentation (automated)"
+            git push
+          fi
