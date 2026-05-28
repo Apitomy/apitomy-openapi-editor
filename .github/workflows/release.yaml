@@ -1,0 +1,127 @@
+name: Release
+on:
+  workflow_dispatch: {}
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  release:
+    name: Build & Release
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'Apitomy'
+    outputs:
+      release-version: ${{ steps.versions.outputs.release-version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Configure Git
+        run: |
+          git config user.name "apitomy-ci"
+          git config user.email "apitomy.ci@gmail.com"
+
+
+      - name: Compute Release Version
+        id: versions
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "release-version=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Release version: $CURRENT_VERSION"
+
+
+      - name: Build and Verify
+        run: |
+          npm install
+          npm run lint
+          npm run build
+
+
+      - name: Create GitHub Release
+        run: |
+          gh release create "v${{ steps.versions.outputs.release-version }}" \
+            --title "${{ steps.versions.outputs.release-version }}" \
+            --generate-notes
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+
+  npm-publish:
+    needs: release
+    uses: ./.github/workflows/npm-publish.yaml
+    with:
+      release-version: ${{ needs.release.outputs.release-version }}
+    secrets: inherit
+
+
+  finalize:
+    needs: [release, npm-publish]
+    runs-on: ubuntu-latest
+    if: always() && needs.release.result == 'success'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Configure Git
+        run: |
+          git config user.name "apitomy-ci"
+          git config user.email "apitomy.ci@gmail.com"
+          git pull
+
+
+      - name: Bump to next patch version
+        run: |
+          npm version patch --no-git-tag-version
+          NEXT_VERSION=$(node -p "require('./package.json').version")
+          git add package.json package-lock.json
+          git commit -m "Automated version update: $NEXT_VERSION"
+          git push
+
+
+      - name: Check Publishing Results
+        run: |
+          echo "Release workflow completed"
+          echo "NPM publish status: ${{ needs.npm-publish.result }}"
+          if [[ "${{ needs.npm-publish.result }}" != "success" ]]; then
+            echo "WARNING: NPM publish failed. You can retry it manually:"
+            echo "  https://github.com/${{ github.repository }}/actions/workflows/npm-publish.yaml"
+          fi
+
+
+      - name: Slack Notification (Always)
+        if: always()
+        run: |
+          NPM_STATUS="${{ needs.npm-publish.result }}"
+          if [[ "$NPM_STATUS" != "success" ]]; then
+            MESSAGE="Release ${{ needs.release.outputs.release-version }} completed with warnings. NPM: $NPM_STATUS. Manual retry may be needed."
+          else
+            MESSAGE="Release ${{ needs.release.outputs.release-version }} completed successfully"
+          fi
+          REPO="${{ github.repository }}"
+          LINK="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+          PAYLOAD="{\"workflow\": \"${{ github.workflow }}\", \"status\": \"${{ job.status }}\", \"message\": \"$MESSAGE\", \"link\": \"$LINK\", \"repository\": \"$REPO\"}"
+          curl -X POST -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.SLACK_NOTIFICATION_WEBHOOK }}
+
+      - name: Slack Notification (Publishing Failures)
+        if: needs.npm-publish.result != 'success'
+        run: |
+          MESSAGE="Release ${{ needs.release.outputs.release-version }}: NPM publish failed (${{ needs.npm-publish.result }}). Retry at https://github.com/${{ github.repository }}/actions/workflows/npm-publish.yaml"
+          REPO="${{ github.repository }}"
+          LINK="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+          PAYLOAD="{\"workflow\": \"${{ github.workflow }}\", \"status\": \"warning\", \"message\": \"$MESSAGE\", \"link\": \"$LINK\", \"repository\": \"$REPO\"}"
+          curl -X POST -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.SLACK_ERROR_WEBHOOK }}

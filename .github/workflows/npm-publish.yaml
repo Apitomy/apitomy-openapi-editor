@@ -1,0 +1,66 @@
+name: NPM Publish Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      release-version:
+        description: 'Release version to publish (e.g., 0.2.0)'
+        required: true
+  workflow_call:
+    inputs:
+      release-version:
+        description: 'Release version to publish'
+        required: true
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  npm-publish:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'Apitomy'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+
+      - name: Log Metadata
+        run: |
+          echo "Publishing Apitomy OpenAPI Editor version ${{ inputs.release-version }} to npm"
+
+
+      - name: Build Project
+        run: |
+          npm install
+          npm run lint
+          npm run build
+
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public
+
+
+      - name: Slack Notification (Always)
+        if: always()
+        run: |
+          MESSAGE="NPM publish for version ${{ inputs.release-version }} completed with status: ${{ job.status }}"
+          REPO="${{ github.repository }}"
+          LINK="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+          PAYLOAD="{\"workflow\": \"${{ github.workflow }}\", \"status\": \"${{ job.status }}\", \"message\": \"$MESSAGE\", \"link\": \"$LINK\", \"repository\": \"$REPO\"}"
+          curl -X POST -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.SLACK_NOTIFICATION_WEBHOOK }}
+
+      - name: Slack Notification (Error)
+        if: failure()
+        run: |
+          MESSAGE="NPM publish for version ${{ inputs.release-version }} FAILED!"
+          REPO="${{ github.repository }}"
+          LINK="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+          PAYLOAD="{\"workflow\": \"${{ github.workflow }}\", \"status\": \"${{ job.status }}\", \"message\": \"$MESSAGE\", \"link\": \"$LINK\", \"repository\": \"$REPO\"}"
+          curl -X POST -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.SLACK_ERROR_WEBHOOK }}
