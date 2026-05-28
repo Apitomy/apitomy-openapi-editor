@@ -1,6 +1,6 @@
 {
   "name": "@apitomy/openapi-editor",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A reusable React component for visual OpenAPI editing",
   "type": "module",
   "main": "./dist/apitomy-openapi-editor.cjs.js",
