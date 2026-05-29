@@ -12,9 +12,9 @@ import {
     MenuList,
     MenuItem, Tooltip,
 } from '@patternfly/react-core';
-import { PlusCircleIcon } from '@patternfly/react-icons';
+import { PlusCircleIcon, TrashIcon } from '@patternfly/react-icons';
 import { ExpandablePanel } from '@components/common/ExpandablePanel';
-import {PathLabel} from "@components/common/PathLabel.tsx";
+import { PathLabel } from "@components/common/PathLabel.tsx";
 
 /**
  * Context menu action definition
@@ -185,30 +185,59 @@ export const NavigationPanelSection: React.FC<NavigationPanelSectionProps> = ({
                         {isFiltered ? `No matching ${itemType}s` : `No ${itemType}s defined`}
                     </NavItem>
                 ) : (
-                    items.map((itemName) => {
-                        const isActive = isItemActive(itemName);
-                        const hasContextMenu = contextMenuItem === itemName;
+                    (() => {
+                        const deleteAction = actions.find(a => a.label.toLowerCase().includes('delete'));
 
-                        return (
-                            <NavItem
-                                key={itemName}
-                                itemId={`${itemType}-${itemName}`}
-                                isActive={isActive}
-                                onClick={() => onItemClick(itemName)}
-                                style={hasContextMenu ? { backgroundColor: 'var(--pf-v6-global--BackgroundColor--200)' } : undefined}
-                            >
-                                {isTooltipEnabled ? (
-                                    <a className={hasContextMenu ? "pf-contextMenu" : undefined} onContextMenu={(e) => handleContextMenu(e, itemName)} style={{width: "100%", overflowX: "hidden", textWrap: "nowrap"}}>
-                                        <Tooltip content={<div>{itemName}</div>}>
-                                            <PathLabel path={itemName} />
-                                        </Tooltip>
-                                    </a>
-                                ) : (
-                                    <a className={hasContextMenu ? "pf-contextMenu" : undefined} onContextMenu={(e) => handleContextMenu(e, itemName)}>{itemName}</a>
-                                )}
-                            </NavItem>
-                        );
-                    })
+                        return items.map((itemName) => {
+                            const isActive = isItemActive(itemName);
+                            const hasContextMenu = contextMenuItem === itemName;
+
+                            return (
+                                <NavItem
+                                    key={itemName}
+                                    itemId={`${itemType}-${itemName}`}
+                                    isActive={isActive}
+                                    onClick={() => onItemClick(itemName)}
+                                    style={hasContextMenu ? { backgroundColor: 'var(--pf-v6-global--BackgroundColor--200)' } : undefined}
+                                    className="nav-panel-item"
+                                >
+                                    <div className="nav-item-content">
+                                        {isTooltipEnabled ? (
+                                            <a
+                                                className={hasContextMenu ? "pf-contextMenu nav-item-link" : "nav-item-link"}
+                                                onContextMenu={(e) => handleContextMenu(e, itemName)}
+                                                style={{ flexGrow: 1, overflowX: "hidden", textWrap: "nowrap" }}
+                                            >
+                                                <Tooltip content={<div>{itemName}</div>}>
+                                                    <PathLabel path={itemName} />
+                                                </Tooltip>
+                                            </a>
+                                        ) : (
+                                            <a
+                                                className={hasContextMenu ? "pf-contextMenu nav-item-link" : "nav-item-link"}
+                                                onContextMenu={(e) => handleContextMenu(e, itemName)}
+                                                style={{ flexGrow: 1 }}
+                                            >
+                                                {itemName}
+                                            </a>
+                                        )}
+                                        {deleteAction && (
+                                            <Button
+                                                variant="plain"
+                                                aria-label={`Delete ${itemType} ${itemName}`}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    deleteAction.onClick(itemName);
+                                                }}
+                                                icon={<TrashIcon />}
+                                                className="item-delete-button"
+                                            />
+                                        )}
+                                    </div>
+                                </NavItem>
+                            );
+                        });
+                    })()
                 )}
             </ExpandablePanel>
 

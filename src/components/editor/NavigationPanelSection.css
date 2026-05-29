@@ -1,3 +1,35 @@
 a.pf-contextMenu {
     background-color: #eee;
 }
+
+.nav-item-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-item-link {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 8px;
+}
+
+.item-delete-button {
+    padding: 2px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: var(--pf-v6-global--Color--200);
+}
+
+.nav-panel-item:hover .item-delete-button {
+    opacity: 1;
+}
+
+.item-delete-button:hover {
+    color: var(--pf-v6-global--danger-color--100) !important;
+}

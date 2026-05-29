@@ -23,6 +23,7 @@ import {
 } from '@apitomy/data-models';
 import { CreatePathModal } from '@components/modals/CreatePathModal';
 import { CreateSchemaModal } from '@components/modals/CreateSchemaModal';
+import { ConfirmDeleteModal } from '@components/modals/ConfirmDeleteModal';
 import { CreatePathCommand } from '@commands/CreatePathCommand';
 import { CreateSchemaCommand } from '@commands/CreateSchemaCommand';
 import { DeletePathCommand } from '@commands/DeletePathCommand';
@@ -40,6 +41,8 @@ export const NavigationPanel: React.FC = () => {
     const { executeCommand } = useCommand();
     const [isCreatePathModalOpen, setIsCreatePathModalOpen] = useState(false);
     const [isCreateSchemaModalOpen, setIsCreateSchemaModalOpen] = useState(false);
+    const [isDeleteConfirmModalOpen, setIsDeleteConfirmModalOpen] = useState(false);
+    const [deleteInfo, setDeleteInfo] = useState<{ name: string; type: 'path' | 'schema' }>({ name: '', type: 'path' });
     const [filterText, setFilterText] = useState('');
 
     /**
@@ -172,17 +175,29 @@ export const NavigationPanel: React.FC = () => {
      * Handle deleting a path from context menu
      */
     const handleDeletePath = (pathName: string) => {
-        const command = new DeletePathCommand(pathName);
-        executeCommand(command, `Delete path ${pathName}`);
-        selectRoot();
+        setDeleteInfo({ name: pathName, type: 'path' });
+        setIsDeleteConfirmModalOpen(true);
     };
 
     /**
      * Handle deleting a schema from context menu
      */
     const handleDeleteSchema = (schemaName: string) => {
-        const command = new DeleteSchemaCommand(schemaName);
-        executeCommand(command, `Delete schema ${schemaName}`);
+        setDeleteInfo({ name: schemaName, type: 'schema' });
+        setIsDeleteConfirmModalOpen(true);
+    };
+
+    /**
+     * Confirm deletion of path or schema
+     */
+    const handleConfirmDelete = () => {
+        if (deleteInfo.type === 'path') {
+            const command = new DeletePathCommand(deleteInfo.name);
+            executeCommand(command, `Delete path ${deleteInfo.name}`);
+        } else {
+            const command = new DeleteSchemaCommand(deleteInfo.name);
+            executeCommand(command, `Delete schema ${deleteInfo.name}`);
+        }
         selectRoot();
     };
 
@@ -208,7 +223,7 @@ export const NavigationPanel: React.FC = () => {
 
     return (
         <>
-            <Nav aria-label="Navigation" onSelect={() => {}}>
+            <Nav aria-label="Navigation" onSelect={() => { }}>
                 <NavList>
                     {/* Main/Info Section */}
                     <NavItem
@@ -276,6 +291,20 @@ export const NavigationPanel: React.FC = () => {
                 isOpen={isCreateSchemaModalOpen}
                 onClose={() => setIsCreateSchemaModalOpen(false)}
                 onConfirm={handleCreateSchema}
+            />
+
+            {/* Confirm Delete Modal */}
+            <ConfirmDeleteModal
+                isOpen={isDeleteConfirmModalOpen}
+                onClose={() => setIsDeleteConfirmModalOpen(false)}
+                onConfirm={handleConfirmDelete}
+                title={`Confirm Delete ${deleteInfo.type === 'path' ? 'Path' : 'Schema'}`}
+                message={
+                    <p>
+                        Are you sure you want to delete the {deleteInfo.type}{' '}
+                        <strong>{deleteInfo.name}</strong>? This action cannot be undone.
+                    </p>
+                }
             />
         </>
     );
