@@ -1,0 +1,75 @@
+name: Update Website
+on:
+  workflow_dispatch: {}
+  release:
+    types: [released]
+
+jobs:
+  update-website:
+    if: github.repository_owner == 'Apitomy'
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Apitomy Website Code Checkout
+        run: |
+          mkdir website
+          cd website
+          git init
+          git config --global user.name "apitomy-ci"
+          git config --global user.email "apitomy.ci@gmail.com"
+          git remote add origin "https://apitomy-ci:${{ secrets.ACCESS_TOKEN }}@github.com/Apitomy/apitomy.github.io.git"
+          git fetch
+          git checkout main
+          git branch --set-upstream-to=origin/main
+          git pull
+
+      - name: Fetch required Details
+        run: |
+          RELEASE_VERSION=$(curl -sf https://api.github.com/repos/Apitomy/apitomy-openapi-editor/releases/latest | jq -r '.name')
+          if [ -z "$RELEASE_VERSION" ] || [ "$RELEASE_VERSION" = "null" ]; then
+            echo "ERROR: Failed to fetch latest release version"
+            exit 1
+          fi
+          echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
+
+      - name: Updating Project Website for Release ${{ env.RELEASE_VERSION }}
+        run: |
+          cd website
+          echo "********** Replacing Existing Latest Release JSON File **********"
+          cd _data/openapieditor
+          rm latestRelease.json
+          curl -sf https://api.github.com/repos/Apitomy/apitomy-openapi-editor/releases/latest > latestRelease.json
+          if [ ! -s latestRelease.json ]; then
+            echo "ERROR: Failed to fetch latest release data"
+            exit 1
+          fi
+
+          echo "********** Saving a copy in the archive **********"
+
+          cp latestRelease.json releases/${RELEASE_VERSION}.json
+
+
+      - name: Commit Project Website Changes
+        run: |
+          cd website
+          git add .
+          git commit -m "Automated Update For Apitomy OpenAPI Editor Release Version: ${{ env.RELEASE_VERSION }}"
+          git push
+
+      - name: Slack Notification (Always)
+        if: always()
+        run: |
+          MESSAGE="'${{ github.workflow }}/${{ github.job }}' job completed with status: ${{ job.status }}"
+          REPO="${{ github.repository }}"
+          LINK="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+          PAYLOAD="{\"workflow\": \"${{ github.workflow }}\", \"status\": \"${{ job.status }}\", \"message\": \"$MESSAGE\", \"link\": \"$LINK\", \"repository\": \"$REPO\"}"
+          curl -X POST -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.SLACK_NOTIFICATION_WEBHOOK }}
+
+      - name: Slack Notification (Error)
+        if: failure()
+        run: |
+          MESSAGE="'${{ github.workflow }}/${{ github.job }}' job FAILED!"
+          REPO="${{ github.repository }}"
+          LINK="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+          PAYLOAD="{\"workflow\": \"${{ github.workflow }}\", \"status\": \"${{ job.status }}\", \"message\": \"$MESSAGE\", \"link\": \"$LINK\", \"repository\": \"$REPO\"}"
+          curl -X POST -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.SLACK_ERROR_WEBHOOK }}
