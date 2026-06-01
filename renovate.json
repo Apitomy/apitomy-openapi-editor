@@ -13,7 +13,13 @@
     ],
     "prConcurrentLimit": 5,
     "prHourlyLimit": 5,
+    "ignoreDeps": [],
     "packageRules": [
+        {
+            "description": "Ignore peerDependencies",
+            "matchDepTypes": ["peerDependencies"],
+            "enabled": false
+        },
         {
             "groupName": "Dependencies: Typescript",
             "matchFileNames": [
