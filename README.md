@@ -1,3 +1,5 @@
+[![Verify Build Workflow](https://github.com/Apitomy/apitomy-openapi-editor/actions/workflows/verify.yaml/badge.svg)](https://github.com/Apitomy/apitomy-openapi-editor/actions/workflows/verify.yaml?query=branch%3Amain)
+
 # Apitomy OpenAPI Editor
 
 A reusable React component for visual OpenAPI editing that can be embedded in React applications.
