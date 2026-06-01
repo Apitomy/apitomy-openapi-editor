@@ -29,6 +29,13 @@ export interface ValidationResult {
     isValid: boolean;
 }
 
+const EMPTY_RESULT: ValidationResult = {
+    problems: [],
+    errorCount: 0,
+    warningCount: 0,
+    isValid: true,
+};
+
 /**
  * Service for validating OpenAPI documents using apitomy-data-models
  */
@@ -38,16 +45,18 @@ export class ValidationService {
      */
     validate(document: Document | null): ValidationResult {
         if (!document) {
-            return {
-                problems: [],
-                errorCount: 0,
-                warningCount: 0,
-                isValid: true,
-            };
+            return EMPTY_RESULT;
         }
 
-        // Use the Library to validate the document (pass null for default severity registry)
-        const problems = Library.validate(document, null as any);
+        // Wrapped in try-catch to handle upstream bugs in @apitomy/data-models where certain
+        // validation rules throw "Cannot convert undefined or null to object" on valid documents.
+        let problems: ValidationProblem[];
+        try {
+            problems = Library.validate(document, null as any);
+        } catch (e) {
+            console.warn('[ValidationService] Upstream validation error caught:', e);
+            return EMPTY_RESULT;
+        }
 
         // Count errors and warnings
         let errorCount = 0;

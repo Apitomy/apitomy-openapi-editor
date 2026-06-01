@@ -1,0 +1,71 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Parameter Example Only API",
+        "version": "1.0.0",
+        "description": "API with a parameter that has example but no examples field"
+    },
+    "paths": {
+        "/items/{itemId}": {
+            "get": {
+                "summary": "Get item by ID",
+                "operationId": "getItem",
+                "parameters": [
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "required": true,
+                        "description": "The ID of the item to retrieve",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "item-123"
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "description": "Response format",
+                        "schema": {
+                            "type": "string",
+                            "enum": ["json", "xml"]
+                        },
+                        "example": "json"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Item"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Item not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Item": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "item-123"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Widget"
+                    }
+                }
+            }
+        }
+    }
+}
