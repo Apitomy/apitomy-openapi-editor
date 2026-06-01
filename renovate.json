@@ -21,7 +21,8 @@
             ],
             "enabled": true,
             "matchUpdateTypes": [
-                "patch", "minor"
+                "patch",
+                "minor"
             ]
         },
         {
@@ -33,7 +34,29 @@
             "matchUpdateTypes": [
                 "major"
             ],
-            "schedule": [ "* 0 1 * *" ]
+            "schedule": [
+                "* 0 1 * *"
+            ]
+        },
+        {
+            "description": "Label minor dependency updates",
+            "matchUpdateTypes": [
+                "minor"
+            ],
+            "labels": [
+                "area/dependencies",
+                "update/minor"
+            ]
+        },
+        {
+            "description": "Label patch dependency updates",
+            "matchUpdateTypes": [
+                "patch"
+            ],
+            "labels": [
+                "area/dependencies",
+                "update/patch"
+            ]
         }
     ]
 }
