@@ -121,6 +121,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## Links
 
+- [Documentation](https://www.apitomy.io/projects/openapi-editor/docs/)
+- [npm Package](https://www.npmjs.com/package/@apitomy/openapi-editor)
 - [GitHub Repository](https://github.com/Apitomy/apitomy-openapi-editor)
-- [Issue Tracker](https://github.com/Apitomy/apitomy-openapi-editor/issues)
-- [Apitomy Project](https://www.apitomy.io/)
+- [Apitomy Website](https://www.apitomy.io)
