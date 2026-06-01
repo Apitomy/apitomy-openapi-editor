@@ -2,13 +2,19 @@
  * Navigation panel for the master section
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import {
     Nav,
     NavList,
     NavItem,
     Divider,
-    SearchInput
+    SearchInput,
+    Modal,
+    ModalVariant,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Button,
 } from '@patternfly/react-core';
 import { useDocument } from '@hooks/useDocument';
 import { useSelection } from '@hooks/useSelection';
@@ -41,6 +47,8 @@ export const NavigationPanel: React.FC = () => {
     const [isCreatePathModalOpen, setIsCreatePathModalOpen] = useState(false);
     const [isCreateSchemaModalOpen, setIsCreateSchemaModalOpen] = useState(false);
     const [filterText, setFilterText] = useState('');
+    const [deleteConfirmPath, setDeleteConfirmPath] = useState<string | null>(null);
+    const handleDeleteRequest = useCallback((path: string) => setDeleteConfirmPath(path), []);
 
     /**
      * Get list of paths from the document
@@ -245,6 +253,7 @@ export const NavigationPanel: React.FC = () => {
                         isItemActive={(path) => navigationObjectType === "pathItem" && navigationObject?.mapPropertyName() === path}
                         nodePath="/paths"
                         isTooltipEnabled={true}
+                        onDeleteItem={handleDeleteRequest}
                     />
 
                     <Divider />
@@ -277,6 +286,23 @@ export const NavigationPanel: React.FC = () => {
                 onClose={() => setIsCreateSchemaModalOpen(false)}
                 onConfirm={handleCreateSchema}
             />
+
+            {/* Delete Path Confirmation Modal */}
+            <Modal
+                variant={ModalVariant.small}
+                isOpen={deleteConfirmPath !== null}
+                onClose={() => setDeleteConfirmPath(null)}
+                aria-labelledby="delete-path-modal-title"
+            >
+                <ModalHeader title="Delete Path" labelId="delete-path-modal-title" />
+                <ModalBody>
+                    Are you sure you want to delete the path <strong>{deleteConfirmPath}</strong>?
+                </ModalBody>
+                <ModalFooter>
+                    <Button variant="link" onClick={() => setDeleteConfirmPath(null)}>Cancel</Button>
+                    <Button variant="danger" onClick={() => { if (deleteConfirmPath) handleDeletePath(deleteConfirmPath); setDeleteConfirmPath(null); }}>Delete</Button>
+                </ModalFooter>
+            </Modal>
         </>
     );
 };

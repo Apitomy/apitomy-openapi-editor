@@ -12,7 +12,7 @@ import {
     MenuList,
     MenuItem, Tooltip,
 } from '@patternfly/react-core';
-import { PlusCircleIcon } from '@patternfly/react-icons';
+import { PlusCircleIcon, TrashIcon } from '@patternfly/react-icons';
 import { ExpandablePanel } from '@components/common/ExpandablePanel';
 import {PathLabel} from "@components/common/PathLabel.tsx";
 
@@ -78,6 +78,11 @@ export interface NavigationPanelSectionProps {
      * Optional node path for the section (for selection support)
      */
     nodePath?: string;
+
+    /**
+     * Optional handler for deleting an item (renders a trash icon when provided)
+     */
+    onDeleteItem?: (itemName: string) => void;
 }
 
 /**
@@ -95,6 +100,7 @@ export const NavigationPanelSection: React.FC<NavigationPanelSectionProps> = ({
     isTooltipEnabled,
     isItemActive,
     nodePath,
+    onDeleteItem,
 }) => {
     // Manage expanded/collapsed state internally
     const [isExpanded, setIsExpanded] = useState(true);
@@ -197,15 +203,33 @@ export const NavigationPanelSection: React.FC<NavigationPanelSectionProps> = ({
                                 onClick={() => onItemClick(itemName)}
                                 style={hasContextMenu ? { backgroundColor: 'var(--pf-v6-global--BackgroundColor--200)' } : undefined}
                             >
-                                {isTooltipEnabled ? (
-                                    <a className={hasContextMenu ? "pf-contextMenu" : undefined} onContextMenu={(e) => handleContextMenu(e, itemName)} style={{width: "100%", overflowX: "hidden", textWrap: "nowrap"}}>
-                                        <Tooltip content={<div>{itemName}</div>}>
-                                            <PathLabel path={itemName} />
+                                <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+                                    <div style={{ flex: 1, overflow: 'hidden', textWrap: 'nowrap' }}>
+                                        {isTooltipEnabled ? (
+                                            <a className={hasContextMenu ? "pf-contextMenu" : undefined} onContextMenu={(e) => handleContextMenu(e, itemName)} style={{width: "100%", overflowX: "hidden", textWrap: "nowrap"}}>
+                                                <Tooltip content={<div>{itemName}</div>}>
+                                                    <PathLabel path={itemName} />
+                                                </Tooltip>
+                                            </a>
+                                        ) : (
+                                            <a className={hasContextMenu ? "pf-contextMenu" : undefined} onContextMenu={(e) => handleContextMenu(e, itemName)}>{itemName}</a>
+                                        )}
+                                    </div>
+                                    {onDeleteItem && (
+                                        <Tooltip content="Delete">
+                                            <Button
+                                                variant="plain"
+                                                aria-label={`Delete ${itemType} ${itemName}`}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    onDeleteItem(itemName);
+                                                }}
+                                                icon={<TrashIcon />}
+                                                style={{ minWidth: 'auto', padding: '2px' }}
+                                            />
                                         </Tooltip>
-                                    </a>
-                                ) : (
-                                    <a className={hasContextMenu ? "pf-contextMenu" : undefined} onContextMenu={(e) => handleContextMenu(e, itemName)}>{itemName}</a>
-                                )}
+                                    )}
+                                </div>
                             </NavItem>
                         );
                     })
