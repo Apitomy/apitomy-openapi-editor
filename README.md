@@ -39,13 +39,13 @@ git clone https://github.com/Apitomy/apitomy-openapi-editor.git
 cd apitomy-openapi-editor
 
 # Install dependencies
-npm install
+yarn install
 
 # Install test app dependencies
-npm run test-app:install
+yarn test-app:install
 
 # Start the test application
-npm run test-app:dev
+yarn test-app:dev
 ```
 
 The test application will start on `http://localhost:3000` (or the next available port). This

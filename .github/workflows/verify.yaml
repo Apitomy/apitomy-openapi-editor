@@ -19,11 +19,14 @@ jobs:
         with:
           node-version: 22
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Build Project
         run: |
-          npm install
-          npm run lint
-          npm run build
+          yarn install --immutable
+          yarn lint
+          yarn build
 
       - name: Slack Notification (Always)
         if: github.event_name == 'push' && always()

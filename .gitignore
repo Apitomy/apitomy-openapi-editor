@@ -37,6 +37,16 @@ coverage/
 tmp/
 temp/
 
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+test-app/.yarn/*
+.pnp.*
+
 # Generated documentation
 PROJECT_INDEX.md
 PROJECT_INDEX.json

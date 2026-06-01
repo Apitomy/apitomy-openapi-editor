@@ -24,19 +24,21 @@ jobs:
       uses: actions/setup-node@v6
       with:
         node-version: '22'
-        cache: 'npm'
+
+    - name: Enable Corepack
+      run: corepack enable
 
     - name: Install dependencies
-      run: npm install
+      run: yarn install --immutable
 
     - name: Build library
-      run: npm run build
+      run: yarn build
 
     - name: Install test-app dependencies
-      run: npm run test-app:install
+      run: yarn test-app:install
 
     - name: Build test application
-      run: npm run test-app:build
+      run: yarn test-app:build
       env:
         VITE_BASE_PATH: /openapi-editor/demo/
 

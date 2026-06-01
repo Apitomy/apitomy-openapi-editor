@@ -22,10 +22,10 @@
     "clean": "rimraf dist *.tsbuildinfo",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test-app:install": "cd test-app && npm install",
-    "test-app:dev": "cd test-app && npm run dev",
-    "test-app:build": "cd test-app && npm run build",
-    "test-app:clean": "cd test-app && npm run clean"
+    "test-app:install": "cd test-app && yarn install",
+    "test-app:dev": "cd test-app && yarn dev",
+    "test-app:build": "cd test-app && yarn build",
+    "test-app:clean": "cd test-app && yarn clean"
   },
   "repository": {
     "type": "git",
@@ -46,13 +46,14 @@
   "bugs": {
     "url": "https://github.com/Apitomy/apitomy-openapi-editor/issues"
   },
+  "packageManager": "yarn@4.15.0",
   "homepage": "https://github.com/Apitomy/apitomy-openapi-editor#readme",
   "peerDependencies": {
     "@apitomy/data-models": "^3.1.0",
+    "@patternfly/react-code-editor": "^6.4.0",
     "@patternfly/react-core": "^6.0.0",
     "@patternfly/react-icons": "^6.0.0",
     "@patternfly/react-table": "^6.0.0",
-    "@patternfly/react-code-editor": "^6.4.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
     "yaml": "^2.6.1",
@@ -61,10 +62,10 @@
   "devDependencies": {
     "@apitomy/data-models": "3.1.0",
     "@eslint/js": "9.39.3",
+    "@patternfly/react-code-editor": "6.4.1",
     "@patternfly/react-core": "6.4.1",
     "@patternfly/react-icons": "6.4.0",
     "@patternfly/react-table": "6.4.1",
-    "@patternfly/react-code-editor": "6.4.1",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@typescript-eslint/eslint-plugin": "8.56.1",

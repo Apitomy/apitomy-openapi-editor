@@ -6,11 +6,11 @@ Thank you for your interest in contributing to the Apitomy OpenAPI Editor!
 
 1. Fork the repository
 2. Clone your fork locally
-3. Install dependencies: `npm install`
+3. Install dependencies: `yarn install`
 4. Create a feature branch: `git checkout -b feature/your-feature-name`
 5. Make your changes
-6. Run the linter: `npm run lint`
-7. Build the project: `npm run build`
+6. Run the linter: `yarn lint`
+7. Build the project: `yarn build`
 8. Commit your changes
 9. Push to your fork
 10. Create a Pull Request
@@ -33,8 +33,8 @@ This project uses:
 
 ## Pull Request Process
 
-1. Ensure your code passes linting: `npm run lint`
-2. Ensure the project builds successfully: `npm run build`
+1. Ensure your code passes linting: `yarn lint`
+2. Ensure the project builds successfully: `yarn build`
 3. Update documentation if you've changed APIs
 4. Describe your changes clearly in the PR description
 5. Link to any related issues

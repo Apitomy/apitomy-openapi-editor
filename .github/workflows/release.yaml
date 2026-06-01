@@ -38,11 +38,14 @@ jobs:
           echo "Release version: $CURRENT_VERSION"
 
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Build and Verify
         run: |
-          npm install
-          npm run lint
-          npm run build
+          yarn install --immutable
+          yarn lint
+          yarn build
 
 
       - name: Create GitHub Release
@@ -84,12 +87,16 @@ jobs:
           git pull
 
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Bump to next patch version
         run: |
-          npm version patch --no-git-tag-version
-          NEXT_VERSION=$(node -p "require('./package.json').version")
-          git add package.json package-lock.json
-          git commit -m "Automated version update: $NEXT_VERSION"
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          NEXT_PATCH=$(node -e "const v='$CURRENT_VERSION'.split('.'); v[2]=parseInt(v[2])+1; console.log(v.join('.'))")
+          node -e "const p=require('./package.json'); p.version='$NEXT_PATCH'; require('fs').writeFileSync('package.json', JSON.stringify(p, null, 2) + '\n')"
+          git add package.json
+          git commit -m "Automated version update: $NEXT_PATCH"
           git push
 
 
