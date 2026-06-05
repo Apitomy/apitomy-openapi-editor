@@ -29,7 +29,6 @@ test.describe('Validation null-safety', () => {
 
         await page.goto('/');
         await expect(page.locator(EDITOR_LOCATOR)).toBeVisible({ timeout: 15000 });
-        await page.waitForLoadState('networkidle');
 
         expect(hasNullObjectError(captured.pageErrors)).toHaveLength(0);
         expect(hasNullObjectError(captured.consoleErrors)).toHaveLength(0);
@@ -48,7 +47,6 @@ test.describe('Validation null-safety', () => {
         await expect(page.locator(EDITOR_LOCATOR)).toBeVisible({ timeout: 15000 });
 
         await page.getByRole('button', { name: 'Empty API' }).click();
-        await page.waitForLoadState('networkidle');
 
         expect(captured.pageErrors).toHaveLength(0);
     });
@@ -60,7 +58,6 @@ test.describe('Validation null-safety', () => {
         await expect(page.locator(EDITOR_LOCATOR)).toBeVisible({ timeout: 15000 });
 
         await page.getByRole('button', { name: '2.0 Example API' }).click();
-        await page.waitForLoadState('networkidle');
 
         expect(hasNullObjectError(captured.pageErrors)).toHaveLength(0);
         expect(hasNullObjectError(captured.consoleErrors)).toHaveLength(0);

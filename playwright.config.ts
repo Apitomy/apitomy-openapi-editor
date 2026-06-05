@@ -22,7 +22,7 @@ export default defineConfig({
         },
     ],
     webServer: {
-        command: 'npm run test-app:dev',
+        command: 'npm run test-app:install && npm run test-app:dev',
         url: 'http://localhost:5173',
         reuseExistingServer: !process.env.CI,
     },
