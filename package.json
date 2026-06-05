@@ -68,7 +68,7 @@
     "@patternfly/react-icons": "6.5.1",
     "@patternfly/react-table": "6.5.1",
     "@playwright/test": "^1.60.0",
-    "@types/react": "19.2.16",
+    "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@typescript-eslint/eslint-plugin": "8.60.1",
     "@typescript-eslint/parser": "8.60.1",
