@@ -12,7 +12,7 @@ import {
     MenuList,
     MenuItem, Tooltip,
 } from '@patternfly/react-core';
-import { PlusCircleIcon } from '@patternfly/react-icons';
+import { PlusCircleIcon, EllipsisVIcon } from '@patternfly/react-icons';
 import { ExpandablePanel } from '@components/common/ExpandablePanel';
 import {PathLabel} from "@components/common/PathLabel.tsx";
 
@@ -152,6 +152,30 @@ export const NavigationPanelSection: React.FC<NavigationPanelSectionProps> = ({
     };
 
     /**
+     * Render the kebab (actions) button for an item, shown on hover.
+     * Opens the same context menu as right-clicking the item.
+     */
+    const renderActionsButton = (itemName: string) => {
+        if (actions.length === 0) {
+            return null;
+        }
+        return (
+            <Button
+                variant="plain"
+                className="nav-section-item__actions"
+                aria-label={`Actions for ${itemType} ${itemName}`}
+                icon={<EllipsisVIcon />}
+                onClick={(event) => {
+                    event.stopPropagation();
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    setContextMenuItem(itemName);
+                    setContextMenuPosition({ x: rect.left, y: rect.bottom });
+                }}
+            />
+        );
+    };
+
+    /**
      * Handle context menu action
      */
     const handleMenuAction = (action: ContextMenuAction) => {
@@ -198,13 +222,17 @@ export const NavigationPanelSection: React.FC<NavigationPanelSectionProps> = ({
                                 style={hasContextMenu ? { backgroundColor: 'var(--pf-v6-global--BackgroundColor--200)' } : undefined}
                             >
                                 {isTooltipEnabled ? (
-                                    <a className={hasContextMenu ? "pf-contextMenu" : undefined} onContextMenu={(e) => handleContextMenu(e, itemName)} style={{width: "100%", overflowX: "hidden", textWrap: "nowrap"}}>
+                                    <div className={hasContextMenu ? "nav-section-item pf-contextMenu" : "nav-section-item"} onContextMenu={(e) => handleContextMenu(e, itemName)}>
                                         <Tooltip content={<div>{itemName}</div>}>
-                                            <PathLabel path={itemName} />
+                                            <PathLabel path={itemName} className="nav-section-item__label" />
                                         </Tooltip>
-                                    </a>
+                                        {renderActionsButton(itemName)}
+                                    </div>
                                 ) : (
-                                    <a className={hasContextMenu ? "pf-contextMenu" : undefined} onContextMenu={(e) => handleContextMenu(e, itemName)}>{itemName}</a>
+                                    <div className={hasContextMenu ? "nav-section-item pf-contextMenu" : "nav-section-item"} onContextMenu={(e) => handleContextMenu(e, itemName)}>
+                                        <span className="nav-section-item__label">{itemName}</span>
+                                        {renderActionsButton(itemName)}
+                                    </div>
                                 )}
                             </NavItem>
                         );
