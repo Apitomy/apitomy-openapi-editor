@@ -40,7 +40,7 @@ jobs:
 
       - name: Build and Verify
         run: |
-          npm install
+          npm ci
           npm run lint
           npm run build
 
@@ -54,17 +54,8 @@ jobs:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
 
-  npm-publish:
-    needs: release
-    uses: ./.github/workflows/npm-publish.yaml
-    with:
-      release-version: ${{ needs.release.outputs.release-version }}
-      quiet: true
-    secrets: inherit
-
-
   finalize:
-    needs: [release, npm-publish]
+    needs: release
     runs-on: ubuntu-latest
     if: always() && needs.release.result == 'success'
     steps:
@@ -94,22 +85,12 @@ jobs:
           git push
 
 
-      - name: Check Publishing Results
-        run: |
-          echo "Release workflow completed"
-          echo "NPM publish status: ${{ needs.npm-publish.result }}"
-          if [[ "${{ needs.npm-publish.result }}" != "success" ]]; then
-            echo "WARNING: NPM publish failed. You can retry it manually:"
-            echo "  https://github.com/${{ github.repository }}/actions/workflows/npm-publish.yaml"
-          fi
-
-
-  # Slack: the outcome of the whole release, publishes included. Success to
-  # the general channel, a failure to the important one, mentioning whoever
-  # ran it. A failed publish can be re-run on its own from its workflow.
+  # Slack: the outcome of the release. Success to the general channel, a failure
+  # to the important one, mentioning whoever ran it. npm publishing is triggered
+  # separately by the GitHub release event and reports its own result.
   notify:
     name: Notify
-    needs: [release, npm-publish, finalize]
+    needs: [release, finalize]
     if: ${{ !cancelled() && github.repository_owner == 'Apitomy' }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -118,7 +99,7 @@ jobs:
         uses: Apicurio/apicurio-github-actions/notify-slack@bd19cbe33797325a571cd7ffd58f639b62e128a2 # v2.4.0
         with:
           level: ${{ (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')) && 'important' || 'general' }}
-          text: "${{ (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')) && format(':x: {0}: release {1} failed (release {2}, npm-publish {3}, finalize {4})', github.repository, needs.release.outputs.release-version, needs.release.result, needs.npm-publish.result, needs.finalize.result) || format(':rocket: {0} {1} released', github.repository, needs.release.outputs.release-version) }}"
+          text: "${{ (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')) && format(':x: {0}: release {1} failed (release {2}, finalize {3})', github.repository, needs.release.outputs.release-version, needs.release.result, needs.finalize.result) || format(':rocket: {0} {1} released', github.repository, needs.release.outputs.release-version) }}"
           link: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           mention: ${{ (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')) && github.actor || '' }}
           machine-users: apitomy-ci
